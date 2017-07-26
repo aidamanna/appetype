@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'menus#view'
+  root 'menus#index'
   #get '/' , to: 'welcome#home'
 end
