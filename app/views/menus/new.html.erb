@@ -1,0 +1,18 @@
+<h1>Create a menu</h1>
+
+<%= form_tag menus_path do %>
+  <p>
+    <%= label_tag :week, 'Week' %>
+    <%= text_field_tag :week %>
+  </p>
+  <% @menu.daily_menus.each do |day, meal| %>
+    <p><%= day.capitalize %></p>
+    <% meal.each do |dish, description| %>
+      <%= label_tag "#{day}_#{dish}", dish.humanize %>
+      <%= text_area_tag "#{day}_#{dish}" %><br \>
+    <% end %>
+  <% end %>
+  <p>
+    <%= submit_tag 'Save' %>
+  </p>
+<% end %>
