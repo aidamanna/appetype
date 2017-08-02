@@ -1,5 +1,14 @@
 <h1>Create a menu</h1>
 
+<% if @menu.errors.any? %>
+<p>The menu couldn't be created</p>
+<ul>
+  <% @menu.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
 <%= form_tag menus_path do %>
   <p>
     <%= label_tag :week, 'Week' %>

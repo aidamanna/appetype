@@ -1,0 +1,12 @@
+<h1>Show a menu</h1>
+
+<p>
+  Week <%= @menu.week %>
+</p>
+<% @menu.daily_menus.each do |day, meal| %>
+  <p><%= day.capitalize %></p>
+  <% meal.each do |dish, description| %>
+    <strong><%= dish.humanize + ': ' %></strong>
+    <%= description %><br \>
+  <% end %>
+<% end %>

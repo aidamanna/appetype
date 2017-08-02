@@ -6,9 +6,16 @@ class MenusController < ApplicationController
   def create
     #render plain: params[:week].inspect
     @menu = Menu.new(menu_params)
-    @menu.save
+    if @menu.save
+      flash[:notice] = "Menu created"
+      redirect_to menu_path(@menu)
+    else
+      render 'new'
+    end
+  end
 
-    redirect_to menus_show(@menu)
+  def show
+    @menu = Menu.find(params[:id])
   end
 
   private
