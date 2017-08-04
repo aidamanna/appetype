@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  before_action :set_menu, only: [:edit, :update, :show]
+
   def index
     @menus = Menu.all
   end
@@ -18,16 +20,11 @@ class MenusController < ApplicationController
     end
   end
 
-  def show
-    @menu = Menu.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @menu = Menu.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
       flash[:notice] = "Menu updated"
       redirect_to menu_path(@menu)
@@ -37,6 +34,10 @@ class MenusController < ApplicationController
   end
 
   private
+  def set_menu
+    @menu = Menu.find(params[:id])
+  end
+
   def menu_params
     {
       week: params[:week],
