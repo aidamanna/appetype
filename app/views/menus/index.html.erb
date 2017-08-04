@@ -1,7 +1,9 @@
 <h1>Menus list</h1>
-
+<p>
+  <%= link_to 'Create new', new_menu_path %>
+</p>
 <ul>
   <% @menus.each do |menu| %>
-  <li><%= menu.week %></li>
+  <li><%= menu.week %> <%= link_to 'View', menu_path(menu) %> <%= link_to 'Edit', edit_menu_path(menu) %></li>
   <% end %>
 </ul>
