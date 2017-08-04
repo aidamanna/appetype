@@ -46,6 +46,21 @@ class MenusController < ApplicationController
           side_dish: params[:tuesday_side_dish],
           omni: params[:tuesday_omni],
           veggie: params[:tuesday_veggie]
+        },
+        wednesday: {
+          side_dish: params[:wednesday_side_dish],
+          omni: params[:wednesday_omni],
+          veggie: params[:wednesday_veggie]
+        },
+        thursday: {
+          side_dish: params[:thursday_side_dish],
+          omni: params[:thursday_omni],
+          veggie: params[:thursday_veggie]
+        },
+        friday: {
+          side_dish: params[:friday_side_dish],
+          omni: params[:friday_omni],
+          veggie: params[:friday_veggie]
         }
       }
     }

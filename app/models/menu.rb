@@ -15,6 +15,21 @@ class Menu < ActiveRecord::Base
         side_dish: '',
         omni: '',
         veggie: ''
+      },
+      wednesday: {
+        side_dish: '',
+        omni: '',
+        veggie: ''
+      },
+      thursday: {
+        side_dish: '',
+        omni: '',
+        veggie: ''
+      },
+      friday: {
+        side_dish: '',
+        omni: '',
+        veggie: ''
       }
     }
   end
