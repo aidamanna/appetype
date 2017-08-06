@@ -1,9 +1,8 @@
-<h1>Menus list</h1>
 <p>
   <%= link_to 'Create new', new_menu_path %>
 </p>
-<ul>
+<ul class="at-list-group">
   <% @menus.each do |menu| %>
-  <li><%= menu.week %> <%= link_to 'View', menu_path(menu) %> <%= link_to 'Edit', edit_menu_path(menu) %></li>
+  <li class="at-list-group-item"><%= menu.week %> <%= link_to 'View', menu_path(menu) %> <%= link_to 'Edit', edit_menu_path(menu) %></li>
   <% end %>
 </ul>
