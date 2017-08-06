@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+    font-family: avenir, sans-serif;
+}
+
 .at-header {
   padding-bottom: 15px;
   margin: 15px 0;
