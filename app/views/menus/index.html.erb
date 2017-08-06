@@ -3,6 +3,12 @@
 </p>
 <ul class="at-list-group">
   <% @menus.each do |menu| %>
-  <li class="at-list-group-item"><%= menu.week %> <%= link_to 'View', menu_path(menu) %> <%= link_to 'Edit', edit_menu_path(menu) %></li>
+  <li class="at-list-group-item">
+    <span><%= menu.week %></span>
+    <div class="pull-right">
+      <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
+      <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
+    </div>
+  </li>
   <% end %>
 </ul>
