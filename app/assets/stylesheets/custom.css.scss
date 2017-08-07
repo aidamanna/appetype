@@ -28,6 +28,10 @@ body {
   box-shadow: 0 1px 3px 1px #eaeaea;
 }
 
+.at-btn-wrapper {
+  margin: 20px 0;
+}
+
 .at-btn-light {
   text-transform: uppercase;
   width: 60px;
@@ -35,4 +39,11 @@ body {
   border: 1px solid #89bc62;
   color: #89bc62;
   margin-right: 5px;
+}
+
+.at-btn-dark {
+  text-transform: uppercase;
+  background-color: #89bc62;
+  border: 1px solid #89bc62;
+  color: white;
 }

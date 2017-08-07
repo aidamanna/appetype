@@ -1,7 +1,5 @@
-<p>
-  <%= link_to 'Create new', new_menu_path %>
-</p>
 <ul class="at-list-group">
+  <%= link_to 'Create new', new_menu_path, class: "btn btn-default btn-xm at-btn-wrapper at-btn-dark" %>
   <% @menus.each do |menu| %>
   <li class="at-list-group-item">
     <span><%= menu.week %></span>
