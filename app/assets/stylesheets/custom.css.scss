@@ -41,9 +41,23 @@ body {
   margin-right: 5px;
 }
 
+.at-btn-light:hover {
+    color: #89bc62;
+    background: transparent;
+    border: 1px solid #89bc62;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
 .at-btn-dark {
   text-transform: uppercase;
   background-color: #89bc62;
   border: 1px solid #89bc62;
   color: white;
+}
+
+.at-btn-dark:hover {
+    color: white;
+    background-color: #89bc62;
+    border: 1px solid #89bc62;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
