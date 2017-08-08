@@ -6,14 +6,26 @@ body {
 }
 
 .at-header {
-  padding-bottom: 15px;
-  margin: 15px 0;
+  padding: 15px;
+  margin-bottom: 15px;
   border-bottom: 1px solid #eeeeee;
-  text-align:center;
+  text-align: center;
+}
+
+.at-footer {
+  padding: 8px 0;
+  margin-top: 15px;
+  border-top: 1px solid #e8e8e8;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.at-logo-footer {
+  height: 15px;
 }
 
 .at-list-group {
-  margin-bottom: 30px;
+  margin: 35px 0;
   padding: 0px 150px;
 }
 
@@ -22,14 +34,10 @@ body {
   display: block;
   background: #f8f8f8;
   padding: 15px;
-  margin-bottom: 15px;
-  border: 1px solid #eeeeee;
+  margin: 15px 0;
+  border: 1px solid #e8e8e8;
   border-radius: 4px;
   box-shadow: 0 1px 3px 1px #eaeaea;
-}
-
-.at-btn-wrapper {
-  margin: 20px 0;
 }
 
 .at-btn-light {
