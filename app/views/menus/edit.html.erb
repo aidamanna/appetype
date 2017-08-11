@@ -1,4 +1,4 @@
-<%= render 'validations' %>
+<%= render 'shared/validations', object: @menu %>
 
 <div class="row">
   <%= form_tag '/menus/' + params[:id], method: :put, class:'form-horizontal', role:'form' do %>

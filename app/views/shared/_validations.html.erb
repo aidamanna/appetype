@@ -1,4 +1,4 @@
-<% if @menu.errors.any? %>
+<% if object.errors.any? %>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
       <div class="panel panel-danger">
@@ -8,7 +8,7 @@
           </h2>
           <div class="pannel-body">
             <ul>
-              <% @menu.errors.full_messages.each do |message| %>
+              <% object.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </ul>
