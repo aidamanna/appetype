@@ -24,6 +24,14 @@ body {
   height: 15px;
 }
 
+.group {
+  margin-bottom: 50px;
+}
+
+.at-row {
+  margin-bottom: 15px;
+}
+
 .at-list-group {
   margin: 35px 0;
   padding: 0px 150px;
@@ -74,4 +82,5 @@ body {
   text-transform: uppercase;
   font-size: 14px;
   color: #89bc62;
+  text-align: right;
 }

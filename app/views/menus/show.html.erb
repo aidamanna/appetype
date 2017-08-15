@@ -1,15 +1,25 @@
-<h1>Show a menu</h1>
-
-<p>
-  Week <%= @menu.week %>
-</p>
+<h3>Week <%= @menu.week %></h3>
 <% @menu.daily_menus.each do |day, meal| %>
-  <p><%= day.capitalize %></p>
+<div class="group">
+  <div class="row at-row">
+    <div class="col-xs-3 at-title-green">
+      <%= day %>
+    </div>
+  </div>
   <% meal.each do |dish, description| %>
-    <strong><%= dish.humanize + ': ' %></strong>
-    <%= description %><br \>
+    <div class="row at-row">
+      <div class="col-xs-3 text-right">
+        <strong><%= dish.humanize %></strong>
+      </div>
+      <div class="col-xs-6">
+        <%= simple_format(description) %>
+      </div>
+    </div>
   <% end %>
+</div>
 <% end %>
-<p>
-  <%= link_to 'Ok', menus_path %>
-</p>
+<div class="row at-row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <%= link_to 'Ok', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
+  </div>
+</div>
