@@ -3,30 +3,34 @@
 <div class="row">
   <div class="col-xs-12">
     <%= form_tag '/menus/' + params[:id], method: :put, class:'form-horizontal', role:'form' do %>
-      <div class="form-group">
-        <div class="control-label col-xs-3">
-          <%= label_tag :week, 'Week' %>
-        </div>
-        <div class="col-xs-6">
-          <%= text_field_tag :week, @menu.week, class:'form-control', autofocus: true  %>
+      <div class="group">
+        <div class="form-group">
+          <div class="control-label col-xs-3 text-right">
+            <%= label_tag :week, 'Week' %>
+          </div>
+          <div class="col-xs-6">
+            <%= text_field_tag :week, @menu.week, class:'form-control', autofocus: true  %>
+          </div>
         </div>
       </div>
       <% @menu.daily_menus.each do |day, meal| %>
-      <div class="form-group">
-        <div class="control-label col-xs-3 at-title-green">
-          <%= day.capitalize %>
-        </div>
-      </div>
-        <% meal.each do |dish, description| %>
+        <div class="group">
           <div class="form-group">
-            <div class="control-label col-xs-3">
-              <%= label_tag "#{day}_#{dish}", dish.humanize %>
-            </div>
-            <div class="col-xs-6">
-              <%= text_area_tag "#{day}_#{dish}", description, rows: 3, class:'form-control', autofocus: true  %><br \>
+            <div class="control-label col-xs-3 at-title-green">
+              <%= day %>
             </div>
           </div>
-        <% end %>
+          <% meal.each do |dish, description| %>
+            <div class="form-group">
+              <div class="control-label col-xs-3 text-right">
+                <%= label_tag "#{day}_#{dish}", dish.humanize %>
+              </div>
+              <div class="col-xs-6">
+                <%= text_area_tag "#{day}_#{dish}", description, rows: 3, class:'form-control', autofocus: true  %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-6">

@@ -3,33 +3,37 @@
 <div class="row">
   <div class="col-xs-12">
     <%= form_tag menus_path, class:'form-horizontal', role:'form' do %>
-        <div class="form-group">
-          <div class="control-label col-xs-3">
-            <%= label_tag :week, 'Week' %>
-          </div>
-          <div class="col-xs-6">
-            <%= text_field_tag :week, '', class:'form-control', autofocus: true %>
+      <div class="group">
+          <div class="form-group">
+            <div class="control-label col-xs-3 text-right">
+              <%= label_tag :week, 'Week' %>
+            </div>
+            <div class="col-xs-6">
+              <%= text_field_tag :week, '', class:'form-control', autofocus: true %>
+            </div>
           </div>
         </div>
       <% @menu.daily_menus.each do |day, meal| %>
-      <div class="form-group">
-        <div class="control-label col-xs-3 at-title-green">
-          <%= day.capitalize %>
-        </div>
-      </div>
-        <% meal.each do |dish, description| %>
-        <div class="form-group">
-          <div class="control-label col-xs-3">
-            <%= label_tag "#{day}_#{dish}", dish.humanize %>
+        <div class="group">
+          <div class="form-group">
+            <div class="control-label col-xs-3 at-title-green">
+              <%= day %>
+            </div>
           </div>
-          <div class="col-xs-6">
-            <%= text_area_tag "#{day}_#{dish}", '', rows: 3, class:'form-control', autofocus: true %>
-          </div>
+          <% meal.each do |dish, description| %>
+            <div class="form-group">
+              <div class="control-label col-xs-3 text-right">
+                <%= label_tag "#{day}_#{dish}", dish.humanize %>
+              </div>
+              <div class="col-xs-6">
+                <%= text_area_tag "#{day}_#{dish}", '', rows: 3, class:'form-control', autofocus: true %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <% end %>
       <% end %>
       <div class="form-group">
-        <div class="col-xs-offset-3 col-xs6">
+        <div class="col-xs-offset-3 col-xs-6">
           <%= submit_tag 'Save', class:'btn btn-default btn-xm at-btn-dark' %> <%= link_to 'Cancel', menus_path,class:'btn btn-default btn-xm at-btn-dark' %>
         </div>
       </div>
