@@ -13,7 +13,7 @@ class MenusController < ApplicationController
     #render plain: params[:week].inspect
     @menu = Menu.new(menu_params)
     if @menu.save
-      flash[:notice] = "Menu created"
+      flash[:success] = "Menu created"
       redirect_to menu_path(@menu)
     else
       render 'new'
@@ -26,7 +26,7 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(menu_params)
-      flash[:notice] = "Menu updated"
+      flash[:success] = "Menu updated"
       redirect_to menu_path(@menu)
     else
       render 'edit'
