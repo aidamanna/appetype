@@ -1,11 +1,17 @@
-<%= render 'shared/validations', object: @menu %>
-
 <div class="row">
   <div class="col-xs-12">
     <%= form_tag menus_path, class:'form-horizontal', role:'form' do %>
       <div class="group">
+        <div class="row at-row">
+          <div class="col-xs-5 col-xs-offset-6 text-right">
+            <%= submit_tag 'Save', class:'btn btn-default btn-xm at-btn-dark' %> <%= link_to 'Cancel', menus_path,class:'btn btn-default btn-xm at-btn-dark' %>
+          </div>
+        </div>
+      </div>
+      <%= render 'shared/validations', object: @menu %>
+      <div class="group">
           <div class="form-group">
-            <div class="control-label col-xs-3 text-right">
+            <div class="at-label col-xs-1 col-xs-offset-1">
               <%= label_tag :week, 'Week' %>
             </div>
             <div class="col-xs-6">
@@ -16,13 +22,13 @@
       <% @menu.daily_menus.each do |day, meal| %>
         <div class="group">
           <div class="form-group">
-            <div class="control-label col-xs-3 at-title-green">
+            <div class="at-label col-xs-1 col-xs-offset-1 at-title-green">
               <%= day %>
             </div>
           </div>
           <% meal.each do |dish, description| %>
             <div class="form-group">
-              <div class="control-label col-xs-3 text-right">
+              <div class="at-label col-xs-1 col-xs-offset-1">
                 <%= label_tag "#{day}_#{dish}", dish.humanize %>
               </div>
               <div class="col-xs-6">
@@ -32,11 +38,6 @@
           <% end %>
         </div>
       <% end %>
-      <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-6">
-          <%= submit_tag 'Save', class:'btn btn-default btn-xm at-btn-dark' %> <%= link_to 'Cancel', menus_path,class:'btn btn-default btn-xm at-btn-dark' %>
-        </div>
-      </div>
     <% end %>
   </div>
 </div>

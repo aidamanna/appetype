@@ -1,14 +1,23 @@
-<h3>Week <%= @menu.week %></h3>
+<div class="group">
+  <div class="row at-row">
+    <div class="col-xs-5 col-xs-offset-1 at-title-big">
+      <%= @menu.week %>
+    </div>
+    <div class="col-xs-5 text-right">
+      <%= link_to 'Ok', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
+    </div>
+  </div>
+</div>
 <% @menu.daily_menus.each do |day, meal| %>
 <div class="group">
   <div class="row at-row">
-    <div class="col-xs-3 at-title-green">
+    <div class="col-xs-1 col-xs-offset-1 at-title-green">
       <%= day %>
     </div>
   </div>
   <% meal.each do |dish, description| %>
     <div class="row at-row">
-      <div class="col-xs-3 text-right">
+      <div class="col-xs-1 col-xs-offset-1">
         <strong><%= dish.humanize %></strong>
       </div>
       <div class="col-xs-6">
@@ -18,8 +27,3 @@
   <% end %>
 </div>
 <% end %>
-<div class="row at-row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <%= link_to 'Ok', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
-  </div>
-</div>

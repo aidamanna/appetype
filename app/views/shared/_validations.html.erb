@@ -1,17 +1,19 @@
 <% if object.errors.any? %>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <div class="panel panel-danger">
-        <div class="panel-heading">
-          <h2 class="panel-title">
-            The menu couldn't be created:
-          </h2>
-          <div class="pannel-body">
-            <ul>
-              <% object.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
+  <div class="group">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-2">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              The menu couldn't be created:
+            </h2>
+            <div class="pannel-body">
+              <ul>
+                <% object.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
