@@ -56,7 +56,14 @@ body {
     color: #89bc62;
     background: transparent;
     border: 1px solid #89bc62;
-    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 1px #D4D4D4;
+}
+
+.at-btn-light:active:focus {
+    color: #89bc62;
+    background: transparent;
+    border: 1px solid #89bc62;
+    box-shadow: 0 1px 3px 1px #A6A6A6;
 }
 
 .at-btn-dark {
@@ -70,9 +77,15 @@ body {
 
 .at-btn-dark:hover {
     color: white;
-    background-color: #89bc62;
-    border: 1px solid #89bc62;
-    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: #9AD46E;
+    border: 1px solid #9AD46E;
+    box-shadow: none;
+}
+
+.at-btn-dark:active:focus {
+    color: white;
+    background-color: #79A656;
+    border: 1px solid #79A656;
 }
 
 .at-title-green {
