@@ -1,12 +1,19 @@
-<ul class="at-list-group">
-  <%= link_to 'Create', new_menu_path, class: "btn btn-default btn-xm at-btn-dark" %>
-  <% @menus.each do |menu| %>
-  <li class="at-list-group-item">
-    <span><%= menu.week %></span>
-    <div class="pull-right">
-      <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
-      <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= link_to 'Create', new_menu_path, class: "btn btn-default btn-xm at-btn-dark" %>
+  </div>
+</div>
+<div class="group">
+  <div class="row at-row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <% @menus.each do |menu| %>
+    <div class="at-list-item">
+      <span><%= menu.week %></span>
+      <div class="pull-right">
+        <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
+        <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
+      </div>
     </div>
-  </li>
-  <% end %>
-</ul>
+    <% end %>
+  </div>
+</div>
