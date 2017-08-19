@@ -69,7 +69,7 @@ body {
     box-shadow: 0 1px 3px 1px var(--at-shadow-grey);
 }
 
-.at-btn-light:active:focus {
+.at-btn-light:focus, .at-btn-light:active:focus {
     color: var(--at-green);
     background: transparent;
     border: 1px solid var(--at-green);
@@ -92,7 +92,7 @@ body {
     box-shadow: none;
 }
 
-.at-btn-dark:active:focus {
+.at-btn-dark:focus, .at-btn-dark:active:focus {
     color: white;
     background-color: var(--at-dark-green);
     border: 1px solid var(--at-dark-green);
