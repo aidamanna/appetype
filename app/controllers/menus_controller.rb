@@ -13,7 +13,7 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(week: next_week, daily_menus: daily_menus)
     if @menu.save
-      flash[:success] = "Menu created"
+      flash[:success] = 'Menu created'
       redirect_to menu_path(@menu)
     else
       render 'new'
@@ -26,7 +26,7 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(daily_menus: daily_menus)
-      flash[:success] = "Menu updated"
+      flash[:success] = 'Menu updated'
       redirect_to menu_path(@menu)
     else
       render 'edit'
@@ -34,6 +34,7 @@ class MenusController < ApplicationController
   end
 
   private
+
   def set_menu
     @menu = Menu.find(params[:id])
   end
@@ -41,9 +42,9 @@ class MenusController < ApplicationController
   def daily_menus
     {
       monday: {
-          side_dish: params[:monday_side_dish],
-          omni: params[:monday_omni],
-          veggie: params[:monday_veggie]
+        side_dish: params[:monday_side_dish],
+        omni: params[:monday_omni],
+        veggie: params[:monday_veggie]
       },
       tuesday: {
         side_dish: params[:tuesday_side_dish],

@@ -35,7 +35,7 @@ class Menu < ActiveRecord::Base
   end
 
   def week_description
-    initial_date = Date.strptime(self.week, "%YW%W")
+    initial_date = Date.strptime(week, '%YW%W')
     final_date = initial_date.next_day(4)
 
     "#{initial_date.strftime('%B %d')} to #{final_date.strftime('%B %d')}"

@@ -1,0 +1,11 @@
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/LineLength:
+  Max: 130
+
+Metrics/MethodLength:
+  Max: 28
+
+Style/Documentation:
+  Enabled: false
