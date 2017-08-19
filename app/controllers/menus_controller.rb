@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:edit, :update, :show]
 
   def index
-    @menus = Menu.all
+    @menus = Menu.all.order('id DESC')
   end
 
   def new
