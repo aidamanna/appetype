@@ -10,7 +10,6 @@ class MenusController < ApplicationController
   end
 
   def create
-    #render plain: params[:week].inspect
     @menu = Menu.new(menu_params)
     if @menu.save
       flash[:success] = "Menu created"
