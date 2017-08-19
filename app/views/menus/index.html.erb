@@ -10,8 +10,9 @@
       <div class="at-list-item">
         <span><%= menu.week_description %></span>
         <div class="pull-right">
-          <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
-          <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-light", role: "button" %>
+          <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+          <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+          <%= link_to 'Publish', {controller: :menus, action: :publish}, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
         </div>
       </div>
       <% end %>

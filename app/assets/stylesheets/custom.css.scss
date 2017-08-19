@@ -53,7 +53,7 @@ body {
   box-shadow: 0 1px 3px 1px var(--at-light-shadow-grey);
 }
 
-.at-btn-light {
+.at-btn-xs-light {
   text-transform: uppercase;
   width: 60px;
   background: transparent;
@@ -62,18 +62,41 @@ body {
   margin-right: 5px;
 }
 
-.at-btn-light:hover {
+.at-btn-xs-light:hover {
     color: var(--at-green);
     background: transparent;
     border: 1px solid var(--at-green);
     box-shadow: 0 1px 3px 1px var(--at-shadow-grey);
 }
 
-.at-btn-light:focus, .at-btn-light:active:focus {
+.at-btn-xs-light:focus, .at-btn-xs-light:active:focus {
     color: var(--at-green);
     background: transparent;
     border: 1px solid var(--at-green);
     box-shadow: 0 1px 3px 1px var(--at-dark-shadow-grey);
+}
+
+.at-btn-xs-dark {
+  text-transform: uppercase;
+  width: 60px;
+  background-color: var(--at-green);
+  border: 1px solid var(--at-green);
+  color: white;
+  margin-right: 5px;
+}
+
+.at-btn-xs-dark:hover {
+  color: white;
+  background-color: var(--at-green);
+  border: 1px solid var(--at-green);
+  box-shadow: 0 1px 3px 1px var(--at-shadow-grey);
+}
+
+.at-btn-xs-dark:focus, .at-btn-xs-dark:active:focus {
+  color: white;
+  background-color: var(--at-green);
+  border: 1px solid var(--at-green);
+  box-shadow: 0 1px 3px 1px var(--at-dark-shadow-grey);
 }
 
 .at-btn-dark {
