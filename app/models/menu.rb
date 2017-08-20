@@ -4,7 +4,7 @@ class Menu < ActiveRecord::Base
   after_initialize :set_default_values
 
   def set_default_values
-    self.state ||= 'draft'
+    self.state ||= :draft
     self.daily_menus ||= {
       monday: {
         side_dish: '',

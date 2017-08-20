@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:edit, :update, :show]
+  before_action :set_menu, only: [:edit, :update, :show, :publish]
 
   def index
     @menus = Menu.all.order('id DESC')
@@ -31,6 +31,16 @@ class MenusController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def publish
+    @menu.state = :published
+    if @menu.save
+      flash[:success] = 'Menu published'
+    else
+      flash[:danger] = 'The menu could not be published'
+    end
+    redirect_to menus_path
   end
 
   private
