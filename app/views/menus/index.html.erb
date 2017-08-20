@@ -11,8 +11,10 @@
         <span><%= menu.week_description %></span>
         <div class="pull-right">
           <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
-          <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
-          <%= link_to 'Publish', publish_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
+          <% if menu.state == 'draft' %>
+            <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+            <%= link_to 'Publish', publish_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
+          <% end %>
         </div>
       </div>
       <% end %>

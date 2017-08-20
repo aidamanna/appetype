@@ -34,7 +34,7 @@ class MenusController < ApplicationController
   end
 
   def publish
-    @menu.state = :published
+    @menu.state = 'published'
     if @menu.save
       flash[:success] = "Menu '#{@menu.week_description}' published"
     else
