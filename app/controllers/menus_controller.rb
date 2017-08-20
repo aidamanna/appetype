@@ -13,7 +13,7 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(week: next_week, daily_menus: daily_menus)
     if @menu.save
-      flash[:success] = 'Menu created'
+      flash[:success] = "Menu '#{@menu.week_description}' created"
       redirect_to menu_path(@menu)
     else
       render 'new'
@@ -26,7 +26,7 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(daily_menus: daily_menus)
-      flash[:success] = 'Menu updated'
+      flash[:success] = "Menu '#{@menu.week_description}' updated"
       redirect_to menu_path(@menu)
     else
       render 'edit'
@@ -36,9 +36,9 @@ class MenusController < ApplicationController
   def publish
     @menu.state = :published
     if @menu.save
-      flash[:success] = 'Menu published'
+      flash[:success] = "Menu '#{@menu.week_description}' published"
     else
-      flash[:danger] = 'The menu could not be published'
+      flash[:danger] = "Error publishing menu '#{@menu.week_description}'"
     end
     redirect_to menus_path
   end
