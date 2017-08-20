@@ -34,8 +34,8 @@ class MenusController < ApplicationController
   end
 
   def publish
-    @menu.state = 'published'
-    if @menu.save
+    form_uid = FormGenerator.new(@menu).form_uid
+    if @menu.update(state: 'published', form: form_uid)
       flash[:success] = "Menu '#{@menu.week_description}' published"
     else
       flash[:danger] = "Error publishing menu '#{@menu.week_description}'"

@@ -38,6 +38,8 @@ gem 'rails_12factor'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'rubocop', require: false
+gem 'rest-client'
+gem 'dotenv'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
