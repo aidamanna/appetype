@@ -41,6 +41,8 @@ gem 'rubocop', require: false
 gem 'rest-client'
 gem 'dotenv'
 
+gem 'bcrypt', '~> 3.1.7'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
