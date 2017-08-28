@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to menus_path
     else
-      render 'new'
+      render '/users/new'
     end
   end
 
