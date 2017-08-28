@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="at-middle-title-wrapper">
+      <div class="at-middle-title-green">
+        Update your account details
+      </div>
+    </div>
+    <%= render 'shared/user_validations', object: @user %>
+    <%= form_for(@user, html: { class:'form-horizontal', role:'form' }) do |f| %>
+        <div class="at-group">
+          <div class="form-group">
+            <div class="at-label col-xs-1 col-xs-offset-3">
+              <%= f.label :name %>
+            </div>
+            <div class="col-xs-4">
+              <%= f.text_field :name, class:'form-control', autofocus: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="at-label col-xs-1 col-xs-offset-3">
+              <%= f.label :email %>
+            </div>
+            <div class="col-xs-4">
+              <%= f.email_field :email, class:'form-control', autofocus: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="at-label col-xs-1 col-xs-offset-3">
+              <%= f.label :password %>
+            </div>
+            <div class="col-xs-4">
+              <%= f.password_field :password, class:'form-control', autofocus: true %>
+            </div>
+          </div>
+        </div>
+        <div class="at-group">
+          <div class="row at-row">
+            <div class="col-xs-4 col-xs-offset-4">
+              <%= submit_tag 'Update your account', class:'btn btn-default btn-xm btn-block at-btn-dark' %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
