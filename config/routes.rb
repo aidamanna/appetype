@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :menus do
     put 'publish', on: :member
   end
+
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
 end
