@@ -78,9 +78,9 @@ class Menu < ActiveRecord::Base
   end
 
   def field_description(menu)
-    "<strong>Side dish:</strong> #{menu['side_dish']}<br>" \
-    "<strong>Omni:</strong> #{menu['omni']}<br>" \
-    "<strong>Veggie:</strong> #{menu['veggie']}"
+    "Side dish: #{menu['side_dish']}\n" \
+    "Omni: #{menu['omni']}\n" \
+    "Veggie: #{menu['veggie']}"
   end
 
   def choices
