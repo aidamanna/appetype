@@ -1,0 +1,25 @@
+<div class="row at-row">
+  <div class="at-middle-title-wrapper">
+    <div class="at-middle-title-green">
+      Appetype users list
+    </div>
+  </div>
+</div>
+<div class="at-group">
+  <div class="row at-row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <% @users.each do |user| %>
+          <div class="at-list-item">
+            <span class="at-list-gravatar">
+              <%= gravatar_for user, size: 25 %>
+            </span>
+            <%= user.name %> | <%= user.email %>
+            <div class="pull-right">
+              <%= link_to 'View', user_path(user), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+              <%= link_to 'Edit', edit_user_path(user), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

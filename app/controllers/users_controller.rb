@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   layout 'simple', only: [:new]
   before_action :set_user, only: [:show, :edit, :update]
 
+  def index
+    @users = User.all.order(:name)
+  end
+
   def new
     @user = User.new
   end
