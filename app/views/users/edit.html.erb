@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <div class="at-middle-title-wrapper">
       <div class="at-middle-title-green">
-        Update your account details
+        Update my account details
       </div>
     </div>
     <%= render 'shared/user_validations', object: @user %>
@@ -35,8 +35,11 @@
         </div>
         <div class="at-group">
           <div class="row at-row">
-            <div class="col-xs-4 col-xs-offset-4">
-              <%= submit_tag 'Update your account', class:'btn btn-default btn-xm btn-block at-btn-dark' %>
+            <div class="col-xs-2 col-xs-offset-4">
+              <%= submit_tag 'Save', class: 'btn btn-default btn-xm btn-block at-btn-dark' %>
+            </div>
+            <div class="col-xs-2">
+              <%= link_to 'Cancel', user_path(@user), class: 'btn btn-default btn-xm btn-block at-btn-dark', role: 'button' %>
             </div>
           </div>
         </div>

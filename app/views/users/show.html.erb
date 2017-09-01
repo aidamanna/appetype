@@ -1,0 +1,32 @@
+<div class="row at-row">
+  <div class="at-middle-title-wrapper">
+    <div class="at-middle-title-green">
+      My account details
+    </div>
+  </div>
+</div>
+<div class="at-group">
+  <div class="row at-row">
+    <div class="col-xs-1 col-xs-offset-4">
+      <strong>Name</strong>
+    </div>
+    <div class="col-xs-3">
+       <%= @user.name %>
+    </div>
+  </div>
+  <div class="row at-row">
+    <div class="col-xs-1 col-xs-offset-4">
+      <strong>Email</strong>
+    </div>
+    <div class="col-xs-3">
+      <%= @user.email %>
+    </div>
+  </div>
+</div>
+<div class="at-group">
+  <div class="row at-row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <%= link_to 'Update my account', edit_user_path(@user), class:'btn btn-default btn-xm btn-block at-btn-dark' %>
+    </div>
+  </div>
+</div>

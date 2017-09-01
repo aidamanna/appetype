@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout 'simple', only: [:new]
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
       render '/users/new'
     end
   end
+
+  def show; end
 
   def edit; end
 
