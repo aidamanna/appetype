@@ -3,7 +3,7 @@
     <%= form_tag '/menus/' + params[:id], method: :put, class:'form-horizontal', role:'form' do %>
       <div class="at-group">
         <div class="row at-row">
-          <div class="col-xs-5 col-xs-offset-1 at-big-title-green">
+          <div class="col-xs-5 col-xs-offset-1 at-title-green">
             <%= @menu.week_description %>
           </div>
           <div class="col-xs-5 text-right">
@@ -16,7 +16,7 @@
       <% @menu.daily_menus.each do |day, meal| %>
         <div class="at-group">
           <div class="form-group">
-            <div class="at-label col-xs-1 col-xs-offset-1 at-title-green">
+            <div class="at-label col-xs-1 col-xs-offset-1 at-subtitle-green">
               <%= day %>
             </div>
           </div>

@@ -1,0 +1,15 @@
+.at-list-item {
+  position: relative;
+  display: block;
+  background: var(--at-grey);
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid var(--at-light-shadow-grey);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 1px var(--at-light-shadow-grey);
+}
+
+.at-list-gravatar {
+  margin-right: 15px;
+  margin-left: 5px;
+}

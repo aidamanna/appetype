@@ -1,0 +1,30 @@
+.at-navbar {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--at-light-shadow-grey);
+  background-color: transparent;
+}
+
+.at-navbar-logo {
+  background: url("/../images/logo.svg") center / contain no-repeat;
+  width: 200px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: var(--at-green);
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus  {
+  color: var(--at-dark-green);
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: var(--at-link-shadow-grey);
+  color: var(--at-dark-green);
+}
