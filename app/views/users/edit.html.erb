@@ -1,13 +1,21 @@
 <div class="row">
   <div class="col-xs-12">
-      <div class="at-middle-title-green">
-        Update my account details
-      </div>
-    <%= render 'shared/user_validations', object: @user %>
     <%= form_for(@user, html: { class:'form-horizontal', role:'form' }) do |f| %>
+    <div class="at-group">
+        <div class="row at-row">
+          <div class="col-xs-5 col-xs-offset-1 at-big-title-green">
+            Edit my account details
+          </div>
+          <div class="col-xs-5 text-right">
+            <%= submit_tag 'Save', class: 'btn btn-default btn-xm at-btn-dark' %>
+            <%= link_to 'Cancel', user_path(@user), class: 'btn btn-default btn-xm at-btn-dark', role: 'button' %>
+          </div>
+        </div>
+      </div>
+      <%= render 'shared/user_validations', object: @user %>
         <div class="at-content-wrapper">
           <div class="form-group">
-            <div class="at-label col-xs-1 col-xs-offset-3">
+            <div class="at-label col-xs-1 col-xs-offset-1">
               <%= f.label :name %>
             </div>
             <div class="col-xs-4">
@@ -15,7 +23,7 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="at-label col-xs-1 col-xs-offset-3">
+            <div class="at-label col-xs-1 col-xs-offset-1">
               <%= f.label :email %>
             </div>
             <div class="col-xs-4">
@@ -23,21 +31,11 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="at-label col-xs-1 col-xs-offset-3">
+            <div class="at-label col-xs-1 col-xs-offset-1">
               <%= f.label :password %>
             </div>
             <div class="col-xs-4">
               <%= f.password_field :password, class:'form-control', autofocus: true %>
-            </div>
-          </div>
-        </div>
-        <div class="at-group">
-          <div class="row at-row">
-            <div class="col-xs-2 col-xs-offset-4">
-              <%= submit_tag 'Save', class: 'btn btn-default btn-xm btn-block at-btn-dark' %>
-            </div>
-            <div class="col-xs-2">
-              <%= link_to 'Cancel', user_path(@user), class: 'btn btn-default btn-xm btn-block at-btn-dark', role: 'button' %>
             </div>
           </div>
         </div>

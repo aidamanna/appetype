@@ -1,31 +1,27 @@
 <div class="row at-row">
-  <div class="at-middle-title-green">
+  <div class="col-xs-5 col-xs-offset-1 at-big-title-green">
     My account details
+  </div>
+  <div class="col-xs-5 text-right">
+    <%= link_to 'Edit', edit_user_path(@user), class:'btn btn-default btn-xm at-btn-dark' %>
   </div>
 </div>
 <div class="at-content-wrapper">
   <div class="row at-row">
-    <div class="col-xs-2 col-xs-offset-4">
+    <div class="col-xs-2 col-xs-offset-1">
       <%= gravatar_for @user, size: 100 %>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-4">
       <div class="row at-row">
-        <div class="col-xs-3">
+        <div class="col-xs-4">
           <%= @user.name %>
         </div>
       </div>
       <div class="row at-row">
-        <div class="col-xs-3">
+        <div class="col-xs-4">
           <%= @user.email %>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<div class="at-group">
-  <div class="row at-row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <%= link_to 'Update my account', edit_user_path(@user), class:'btn btn-default btn-xm btn-block at-btn-dark' %>
     </div>
   </div>
 </div>

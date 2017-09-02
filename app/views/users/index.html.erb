@@ -1,8 +1,11 @@
 <div class="row at-row">
-  <div class="at-middle-title-wrapper">
-    <div class="at-middle-title-green">
+  <div class="col-xs-5 col-xs-offset-1">
+    <div class="at-big-title-green">
       Users list
     </div>
+  </div>
+  <div class="col-xs-5 text-right">
+    <%= will_paginate %>
   </div>
 </div>
 <div class="at-group">
@@ -21,8 +24,5 @@
           </div>
       <% end %>
     </div>
-  </div>
-  <div align="center">
-    <%= will_paginate %>
   </div>
 </div>
