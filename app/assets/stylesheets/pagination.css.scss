@@ -1,0 +1,40 @@
+.pagination {
+  margin: 0;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background-color: var(--at-green);
+  border-color: var(--at-green);
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: var(--at-light-shadow-grey);
+  background-color: var(--at-grey);
+  border: 1px solid var(--at-light-shadow-grey);
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: var(--at-green);
+  background: var(--at-grey);
+  border: 1px solid var(--at-light-shadow-grey);
+  margin-left: -1px;
+}
+
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > span:hover,
+.pagination > li > span:focus {
+  color: var(--at-green);
+  background: var(--at-light-shadow-grey);
+  border-color: var(--at-light-shadow-grey);
+}

@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:edit, :update, :show, :publish]
 
   def index
-    @menus = Menu.all.order('id DESC')
+    @menus = Menu.paginate(page: params[:page], per_page: 5).order('id DESC')
   end
 
   def new
