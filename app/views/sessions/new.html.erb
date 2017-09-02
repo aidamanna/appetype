@@ -1,0 +1,27 @@
+<div class="row at-registration-icon" >
+  <%= link_to image_tag('/images/logo_small.svg'), menus_path %>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(:session, html: { class:'form-horizontal', role:'form' }, url: login_path) do |f| %>
+        <div class="at-sign-up-wrapper">
+          <div class="form-group">
+            <div class="col-xs-4 col-xs-offset-4">
+              <%= f.email_field :email, class:'form-control', placeholder: 'Email', autofocus: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-4 col-xs-offset-4">
+              <%= f.password_field :password, class:'form-control', placeholder: 'Password', autocomplete: "off" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <%= submit_tag 'Log in', class:'btn btn-default btn-xm btn-block at-btn-dark' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
