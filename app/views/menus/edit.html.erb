@@ -1,23 +1,29 @@
 <div class="row">
   <div class="col-xs-12">
     <%= form_tag '/menus/' + params[:id], method: :put, class:'form-horizontal', role:'form' do %>
-      <div class="at-group">
-        <div class="row at-row">
-          <div class="col-xs-5 col-xs-offset-1 at-title-green">
+      <div class="row at-actions-wrapper">
+        <div class="col-xs-5 col-xs-offset-1">
+          <div class="at-title-green">
             <%= @menu.week_description %>
           </div>
-          <div class="col-xs-5 text-right">
-            <%= submit_tag 'Save', class:'btn btn-default btn-xm at-btn-dark' %>
-            <%= link_to 'Cancel', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
-          </div>
+        </div>
+        <div class="col-xs-5 text-right">
+          <%= submit_tag 'Save', class:'btn btn-default btn-xm at-btn-dark' %>
+          <%= link_to 'Cancel', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
         </div>
       </div>
-      <%= render 'shared/validations', object: @menu %>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <%= render 'shared/validations', object: @menu %>
+        </div>
+      </div>
       <% @menu.daily_menus.each do |day, meal| %>
-        <div class="at-group">
+        <div class="at-day-wrapper">
           <div class="form-group">
-            <div class="at-label col-xs-1 col-xs-offset-1 at-subtitle-green">
-              <%= day %>
+            <div class="col-xs-1 col-xs-offset-1">
+              <div class="at-subtitle-green">
+                <%= day %>
+              </div>
             </div>
           </div>
           <% meal.each do |dish, description| %>

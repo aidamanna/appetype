@@ -1,29 +1,31 @@
-<div class="at-group">
-  <div class="row at-row">
-    <div class="col-xs-5 col-xs-offset-1 at-title-green">
+<div class="row at-actions-wrapper">
+  <div class="col-xs-5 col-xs-offset-1">
+    <div class="at-title-green">
       <%= @menu.week_description %>
     </div>
-    <div class="col-xs-5 text-right">
-      <%= link_to 'Ok', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
-    </div>
+  </div>
+  <div class="col-xs-5 text-right">
+    <%= link_to 'Ok', menus_path, class:'btn btn-default btn-xm at-btn-dark' %>
   </div>
 </div>
 <% @menu.daily_menus.each do |day, meal| %>
-<div class="at-group">
-  <div class="row at-row">
-    <div class="col-xs-1 col-xs-offset-1 at-subtitle-green">
-      <%= day %>
-    </div>
-  </div>
-  <% meal.each do |dish, description| %>
+  <div class="at-day-wrapper">
     <div class="row at-row">
       <div class="col-xs-1 col-xs-offset-1">
-        <strong><%= dish.humanize %></strong>
-      </div>
-      <div class="col-xs-6">
-        <%= simple_format(description) %>
+        <div class="at-subtitle-green">
+          <%= day %>
+        </div>
       </div>
     </div>
-  <% end %>
-</div>
+    <% meal.each do |dish, description| %>
+      <div class="row at-row">
+        <div class="col-xs-1 col-xs-offset-1">
+          <strong><%= dish.humanize %></strong>
+        </div>
+        <div class="col-xs-6">
+          <%= simple_format(description) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>

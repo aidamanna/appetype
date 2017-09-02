@@ -3,10 +3,14 @@
   display: block;
   background: var(--at-grey);
   padding: 15px;
-  margin: 15px 0;
+  margin-bottom: 15px;
   border: 1px solid var(--at-light-shadow-grey);
   border-radius: 4px;
   box-shadow: 0 1px 3px 1px var(--at-light-shadow-grey);
+}
+
+.at-list-item:last-child {
+  margin-bottom: 0;
 }
 
 .at-list-gravatar {

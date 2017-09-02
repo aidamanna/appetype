@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row at-actions-wrapper">
   <div class="col-xs-5 col-xs-offset-1">
     <%= link_to 'Create', new_menu_path, class: "btn btn-default btn-xm at-btn-dark" %>
   </div>
@@ -6,21 +6,19 @@
   <%= will_paginate %>
   </div>
 </div>
-<div class="at-group">
-  <div class="row at-row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <% @menus.each do |menu| %>
-      <div class="at-list-item">
-        <span><%= menu.week_description %></span>
-        <div class="pull-right">
-          <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
-          <% if menu.state == 'draft' %>
-            <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
-            <%= link_to 'Publish', publish_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
-          <% end %>
-        </div>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <% @menus.each do |menu| %>
+    <div class="at-list-item">
+      <span><%= menu.week_description %></span>
+      <div class="pull-right">
+        <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+        <% if menu.state == 'draft' %>
+          <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+          <%= link_to 'Publish', publish_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
+        <% end %>
       </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
 </div>

@@ -1,12 +1,16 @@
-<div class="row at-sign at-sign-up-logo" >
+<div class="row at-sign-up-logo" >
   <%= link_to image_tag('/images/logo_small.svg'), menus_path %>
 </div>
 
 <div class="row">
   <div class="col-xs-12">
-    <%= render 'shared/user_validations', object: @user %>
     <%= form_for(@user, html: { class:'form-horizontal', role:'form' }) do |f| %>
-      <div class="at-group">
+      <div class="at-sign-up-wrapper">
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <%= render 'shared/validations', object: @user %>
+          </div>
+        </div>
         <div class="form-group">
           <div class="col-xs-4 col-xs-offset-4">
             <%= f.text_field :name, class:'form-control', placeholder: 'Name', autofocus: true %>
@@ -23,11 +27,9 @@
           </div>
         </div>
       </div>
-      <div class="at-group">
-        <div class="row at-row">
-          <div class="col-xs-4 col-xs-offset-4">
-            <%= submit_tag 'Sign up', class:'btn btn-default btn-xm btn-block at-btn-dark' %>
-          </div>
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <%= submit_tag 'Sign up', class:'btn btn-default btn-xm btn-block at-btn-dark' %>
         </div>
       </div>
     <% end %>
