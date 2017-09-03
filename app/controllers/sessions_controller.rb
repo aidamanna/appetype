@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
-  layout 'simple', only: [:new]
+  layout 'simple', only: [:new, :create]
+  skip_before_filter :require_login, only: [:new, :create]
 
-  def new; end
+  def new
+    redirect_to menus_path if logged_in?
+  end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)

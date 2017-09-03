@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  layout 'simple', only: [:new]
+  layout 'simple', only: [:new, :create]
+  skip_before_filter :require_login, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to menus_path if logged_in?
     @user = User.new
   end
 
