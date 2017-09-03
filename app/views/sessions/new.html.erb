@@ -1,7 +1,7 @@
+<%= render 'shared/registration_actions', text: 'New to Appetype? Create an account', path: signup_path %>
 <div class="row at-registration-icon" >
   <%= link_to image_tag('/images/logo_small.svg'), menus_path %>
 </div>
-
 <div class="row">
   <div class="col-xs-12">
     <%= form_for(:session, html: { class:'form-horizontal', role:'form' }, url: login_path) do |f| %>

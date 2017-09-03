@@ -13,3 +13,13 @@
 .at-label {
   padding-top: 7px;
 }
+
+.at-link {
+  color: var(--at-green);
+}
+
+.at-link:hover,
+.at-link:focus {
+  color: var(--at-dark-green);
+  text-decoration: none;
+}
