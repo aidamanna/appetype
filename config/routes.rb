@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :menus do
     put 'publish', on: :member
+    get 'fill', on: :member
   end
 
   get 'signup', to: 'users#new'

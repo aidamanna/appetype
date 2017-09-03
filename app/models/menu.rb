@@ -55,9 +55,11 @@ class Menu < ActiveRecord::Base
           properties: {
             share_icons: false
           }
-
         }
-      ]
+      ],
+      theme: {
+        href: 'https://api.typeform.com/themes/MgPk3M'
+      }
     }.to_json
   end
 

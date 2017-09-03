@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:edit, :update, :show, :publish]
+  before_action :set_menu, only: [:edit, :update, :show, :publish, :fill]
 
   def index
     @menus = Menu.paginate(page: params[:page], per_page: 5).order('id DESC')
@@ -43,6 +43,8 @@ class MenusController < ApplicationController
     end
     redirect_to menus_path
   end
+
+  def fill; end
 
   private
 
