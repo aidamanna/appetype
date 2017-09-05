@@ -38,7 +38,8 @@ class MenusController < ApplicationController
       form_uid = CreateForm.new(@menu).form_uid
       @menu.update(state: 'published', form: form_uid)
       flash[:success] = "Menu '#{@menu.week_description}' published"
-    rescue
+    rescue => err
+      puts "Error publishing the menu. Error: #{err}"
       flash[:danger] = "Error publishing menu '#{@menu.week_description}'"
     end
     redirect_to menus_path
@@ -52,7 +53,8 @@ class MenusController < ApplicationController
       UpdateForm.new(@menu)
       @menu.save
       flash[:success] = "Menu '#{@menu.week_description}' closed"
-    rescue
+    rescue => err
+      puts "Error closing the menu. Error: #{err}"
       flash[:danger] = "Error closing menu '#{@menu.week_description}'"
     end
     redirect_to menus_path
