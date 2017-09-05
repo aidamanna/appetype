@@ -45,7 +45,7 @@ class Menu < ActiveRecord::Base
     {
       title: week_description,
       settings: {
-        is_public: true,
+        is_public: self.state != 'closed',
         show_typeform_branding: false
       },
       fields: fields,
