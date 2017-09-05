@@ -1,4 +1,4 @@
-class FormGenerator
+class CreateForm
   attr_reader :form_uid
 
   def initialize(menu)
