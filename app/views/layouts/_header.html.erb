@@ -17,6 +17,10 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
+            <% if can? :index, @users %>
+              <li><%= link_to 'User management', users_path %></li>
+              <li class="divider"></li>
+            <% end %>
             <li><%= link_to 'My account', user_path(current_user) %></li>
             <li class="divider"></li>
             <li><%= link_to 'Log out', logout_path, method: :delete %></li>
