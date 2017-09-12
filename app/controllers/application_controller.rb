@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
+
+  rescue_from CanCan::AccessDenied do |_exception|
+    render file: "#{Rails.root}/public/403.html.erb", status: 403, layout: false
+  end
+
   private
 
   def require_login

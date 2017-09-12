@@ -3,9 +3,9 @@ class UpdateForm
     form_payload = menu.to_form_payload
 
     RestClient.put(
-        Config.forms_endpoint + "/#{menu.form}",
-        form_payload,
-        'Authorization' => Config.auth_token
+      Config.forms_endpoint + "/#{menu.form}",
+      form_payload,
+      'Authorization' => Config.auth_token
     )
   rescue RestClient::Exception => err
     puts "Error closing the form with id: #{menu.id} " \
