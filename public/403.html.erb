@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Access forbidden (403)</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="at-error">
+      <img class="at-error-image" src="/images/avocado.jpg">
+      <h1>403 Access forbidden</h1>
+      <%= link_to 'Go to menus list', menus_path, class:'at-link' %>
+    </div>
+  </body>
+</html>
