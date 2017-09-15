@@ -6,8 +6,14 @@ class Ability
 
     can :manage, :all if user.role?(:admin)
 
-    can [:read, :create, :update], Menu if user.role?(:catering)
-    can [:read, :fill], Menu if user.role?(:diner)
+    if user.role?(:catering)
+      can %i[read create update], Menu
+      can %i[show update], User, id: user.id
+    end
 
+    if user.role?(:diner)
+      can %i[read fill], Menu
+      can %i[show update], User, id: user.id
+    end
   end
 end

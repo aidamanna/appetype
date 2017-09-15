@@ -9,4 +9,3 @@
 User.create(name: 'Admin', email: 'admin@appetype.com', password: 'admin', role: 'admin')
 User.create(name: 'Catering', email: 'catering@appetype.com', password: 'catering', role: 'catering')
 User.create(name: 'Aida', email: 'aida@appetype.com', password: 'aida', role: 'diner')
-
