@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :set_menu, except: [:index, :new, :create]
+  load_and_authorize_resource
 
   def index
     @menus = Menu.paginate(page: params[:page], per_page: 5).order('id DESC')
