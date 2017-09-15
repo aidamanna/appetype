@@ -6,4 +6,8 @@ module Config
   def self.forms_endpoint
     'https://api.typeform.com/forms'
   end
+
+  def self.webhook_url
+    ENV['WEBHOOK_URL']
+  end
 end

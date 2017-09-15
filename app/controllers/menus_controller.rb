@@ -37,6 +37,7 @@ class MenusController < ApplicationController
   def publish
     begin
       form_uid = CreateForm.new(@menu).form_uid
+      CreateWebhook.new(form_uid)
       @menu.update(state: 'published', form: form_uid)
       flash[:success] = "Menu '#{@menu.week_description}' published"
     rescue => err
