@@ -73,7 +73,7 @@ class Menu < ActiveRecord::Base
         properties: {
           description: field_description(menu),
           vertical_alignment: true,
-          choices: choices
+          choices: choices(day)
         }
       }
     end
@@ -85,15 +85,28 @@ class Menu < ActiveRecord::Base
     "Veggie: #{menu['veggie']}"
   end
 
-  def choices
-    menu_choices = [
-      'Home office - Omni',
-      'Home office - Veggie',
-      'Beach house - Omni',
-      'Beach house - Veggie',
-      'Out of the office'
+  def choices(day)
+    [
+      {
+        label: 'Home office - Omni',
+        ref: "#{day}-home-omni"
+      },
+      {
+        label: 'Home office - Veggie',
+        ref: "#{day}-home-veggie"
+      },
+      {
+        label: 'Beach house - Omni',
+        ref: "#{day}-beach-omni"
+      },
+      {
+        label: 'Beach house - Veggie',
+        ref: "#{day}-beach-veggie"
+      },
+      {
+        label: 'Out of the office',
+        ref: "#{day}-out"
+      }
     ]
-
-    menu_choices.map { |choice| { label: choice } }
   end
 end
