@@ -4,7 +4,7 @@ RSpec.describe Form, 'choice_with_label' do
   it 'fails if the form does not have fields' do
     form_definition = { fields: [] }
     form = Form.new(form_definition)
-    expect { form.choice_ref('1', 'Home office - Omni') }.to raise_error
+    expect { form.choice_ref('1', 'Home office - Omni') }.to raise_error 'No field with id: 1'
   end
 
   it 'fails when the field id exists but does not contain a choice with the given label' do
@@ -23,7 +23,8 @@ RSpec.describe Form, 'choice_with_label' do
       ]
     }
     form = Form.new(form_definition)
-    expect { form.choice_ref('1', 'Home office - Omni') }.to raise_error
+    expect { form.choice_ref('1', 'Home office - Omni') }
+      .to raise_error 'No choice with label: Home office - Omni'
   end
 
   it 'returns the choice ref when the form has a multiple choice with the label' do
