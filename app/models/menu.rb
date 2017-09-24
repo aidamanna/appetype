@@ -105,7 +105,7 @@ class Menu < ActiveRecord::Base
       },
       {
         label: 'Out of the office',
-        ref: "#{day}-out"
+        ref: "#{day}-out-out"
       }
     ]
   end
