@@ -2,7 +2,8 @@ require_relative '../../app/helpers/daily_order'
 
 RSpec.describe DailyOrder, 'to_hash' do
   it 'should fail if the ref does not have three parts' do
-    expect { DailyOrder.from_ref('withoutthreeparts') }.to raise_error 'The ref does not have three parts'
+    expect { DailyOrder.from_ref('withoutthreeparts') }
+        .to raise_error 'The ref does not have three parts: withoutthreeparts'
   end
 
   it 'should return a daily order' do
