@@ -29,8 +29,9 @@
           <% end %>
           <% if can? :close, Menu %>
             <%= link_to 'Close', close_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
+            <%= link_to 'Results', menu_orders_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
-      <% end %>
+        <% end %>
       </div>
     </div>
     <% end %>
