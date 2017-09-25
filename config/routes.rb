@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  post 'webhooks/orders', to: 'orders#create'
+  post 'webhooks/orders', to: 'webhook_orders#create'
 end

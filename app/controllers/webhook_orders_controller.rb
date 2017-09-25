@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class WebhookOrdersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :require_login
 
   def create
