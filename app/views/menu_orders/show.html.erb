@@ -34,15 +34,15 @@
         <div class="col-xs-6">
           <%= simple_format(description) %>
         </div>
-        <% unless @menu_orders.orders[day.to_sym][dish.to_sym].nil? %>
+        <% unless @menu_orders[day.to_sym][dish.to_sym].nil? %>
           <div class="col-xs-1 at-text-green">
-            <%= @menu_orders.orders[day.to_sym][dish.to_sym][:home_office] %>
+            <%= @menu_orders[day.to_sym][dish.to_sym][:home_office] %>
           </div>
           <div class="col-xs-1 at-text-green">
-            <%= @menu_orders.orders[day.to_sym][dish.to_sym][:beach_house] %>
+            <%= @menu_orders[day.to_sym][dish.to_sym][:beach_house] %>
           </div>
           <div class="col-xs-1 at-text-green">
-            <%= @menu_orders.orders[day.to_sym][dish.to_sym][:total] %>
+            <%= @menu_orders[day.to_sym][dish.to_sym][:total] %>
           </div>
         <% end %>
       </div>
