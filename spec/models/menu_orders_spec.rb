@@ -15,6 +15,51 @@ describe 'Base constructor' do
   end
 end
 
+describe 'Add' do
+  it 'should fail when adding an invalid day' do
+    base = MenuOrders.base(['monday'], ['omni'], ['home_office'])
+
+    expect { base.add('tuesday', 'omni', 'home_office', 10) }.to raise_error 'Invalid menu order'
+  end
+
+  it 'should update counters when adding a valid order' do
+    base = MenuOrders.base(['monday'], ['omni'], ['home_office'])
+    base.add('monday', 'omni', 'home_office', 10)
+    expected_menu_orders = {
+      monday: {
+        omni: {
+          home_office: 10,
+          total: 10
+        }
+      }
+    }
+
+    expect(base.to_hash).to eql(expected_menu_orders)
+  end
+
+  it 'should update counters when adding two valid orders' do
+    base = MenuOrders.base(%w(monday tuesday), ['omni'], ['home_office'])
+    base.add('monday', 'omni', 'home_office', 10)
+    base.add('tuesday', 'omni', 'home_office', 1)
+    expected_menu_orders = {
+      monday: {
+        omni: {
+          home_office: 10,
+          total: 10
+        }
+      },
+      tuesday: {
+        omni: {
+          home_office: 1,
+          total: 1
+        }
+      }
+    }
+
+    expect(base.to_hash).to eql(expected_menu_orders)
+  end
+end
+
 describe 'To hash' do
   it 'should export the base menu orders when passing one day, one choice and one office' do
     menu_orders = MenuOrders.base(%w(monday), %w(omni), %w(home_office))

@@ -36,10 +36,10 @@
         </div>
         <% unless @menu_orders[day.to_sym][dish.to_sym].nil? %>
           <div class="col-xs-1 at-text-green text-center">
-            <%= @menu_orders[day.to_sym][dish.to_sym][:home_office] %>
+            <%= @menu_orders[day.to_sym][dish.to_sym][:home] %>
           </div>
           <div class="col-xs-1 at-text-green text-center">
-            <%= @menu_orders[day.to_sym][dish.to_sym][:beach_house] %>
+            <%= @menu_orders[day.to_sym][dish.to_sym][:beach] %>
           </div>
           <div class="col-xs-1 at-text-green text-center">
             <%= @menu_orders[day.to_sym][dish.to_sym][:total] %>
