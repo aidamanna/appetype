@@ -23,7 +23,7 @@ class WebhookOrdersController < ApplicationController
 
     Order.create(
       menu_id: menu_id(form_id),
-      user_id: nil,
+      user_id: user_id(form_response),
       daily_orders: daily_orders(daily_orders_refs)
     )
   end
@@ -45,6 +45,11 @@ class WebhookOrdersController < ApplicationController
 
   def menu_id(form_id)
     Menu.find_by_form(form_id).id
+  end
+
+  def user_id(form_response)
+    email = form_response[:hidden][:email]
+    User.find_by_email(email).id
   end
 
   def daily_orders(daily_orders_refs)

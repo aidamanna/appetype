@@ -48,6 +48,9 @@ class Menu < ActiveRecord::Base
         is_public: self.state != 'closed',
         show_typeform_branding: false
       },
+      hidden: [
+          'email'
+      ],
       fields: fields,
       thankyou_screens: [
         {
