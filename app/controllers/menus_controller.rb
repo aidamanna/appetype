@@ -34,19 +34,6 @@ class MenusController < ApplicationController
     end
   end
 
-  def publish
-    begin
-      form_uid = CreateForm.new(@menu).form_uid
-      CreateWebhook.new(form_uid)
-      @menu.update(state: 'published', form: form_uid)
-      flash[:success] = "Menu '#{@menu.week_description}' published"
-    rescue => err
-      puts "Error publishing the menu. Error: #{err}"
-      flash[:danger] = "Error publishing menu '#{@menu.week_description}'"
-    end
-    redirect_to menus_path
-  end
-
   def fill; end
 
   def close

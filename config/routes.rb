@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
+  put 'menus/:id/publish', to: 'publish_menu#invoke', as: 'publish_menu'
+
   resources :menus do
-    put 'publish', on: :member
     get 'fill', on: :member
     put 'close', on: :member
   end
