@@ -1,4 +1,6 @@
 class MenuOrdersController < ApplicationController
+  authorize_resource class: MenuOrdersController
+
   def show
     @menu = Menu.find(params[:id])
 
