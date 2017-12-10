@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  layout 'simple', only: [:new, :create]
-  skip_before_filter :require_login, only: [:new, :create]
-  before_action :set_user, only: [:show, :edit, :update]
-  load_and_authorize_resource except: [:new, :create]
+  layout 'simple', only: %i[new create]
+  skip_before_filter :require_login, only: %i[new create]
+  before_action :set_user, only: %i[show edit update]
+  load_and_authorize_resource except: %i[new create]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 5).order(:name)

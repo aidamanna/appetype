@@ -11,7 +11,6 @@ class CreateForm
     )
 
     @form_uid = JSON.parse(response.body, symbolize_names: true)[:id]
-
   rescue RestClient::Exception => err
     puts "Error publishing the form with id: #{menu.id} " \
          "Response code: #{err.http_code} " \

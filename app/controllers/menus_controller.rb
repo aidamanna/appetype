@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_menu, except: [:index, :new, :create]
+  before_action :set_menu, except: %i[index new create]
   load_and_authorize_resource
 
   def index

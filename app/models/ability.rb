@@ -4,16 +4,24 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :manage, :all if user.role?(:admin)
+    admin_user_actions if user.role?(:admin)
+    catering_user_actions(user) if user.role?(:catering)
+    diner_user_actions(user) if user.role?(:diner)
+  end
 
-    if user.role?(:catering)
-      can %i(read create update), Menu
-      can %i(show update), User, id: user.id
-    end
+  private
 
-    if user.role?(:diner)
-      can %i(read fill), Menu
-      can %i(show update), User, id: user.id
-    end
+  def admin_user_actions
+    can :manage, :all
+  end
+
+  def catering_user_actions(user)
+    can %i[read create update], Menu
+    can %i[show update], User, id: user.id
+  end
+
+  def diner_user_actions(user)
+    can %i[read fill], Menu
+    can %i[show update], User, id: user.id
   end
 end

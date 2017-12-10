@@ -49,7 +49,7 @@ class Menu < ActiveRecord::Base
         show_typeform_branding: false
       },
       hidden: [
-          'email'
+        'email'
       ],
       fields: fields,
       thankyou_screens: [

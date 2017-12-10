@@ -8,7 +8,12 @@ Metrics/MethodLength:
   Max: 28
 
 Metrics/ClassLength:
-  Max: 101
+  Max: 104
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "db/schema.rb"
 
 Style/Documentation:
   Enabled: false

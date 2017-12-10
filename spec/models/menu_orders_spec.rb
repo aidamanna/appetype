@@ -38,7 +38,7 @@ describe 'Add' do
   end
 
   it 'should update counters when adding two valid orders' do
-    base = MenuOrders.base(%w(monday tuesday), ['omni'], ['home_office'])
+    base = MenuOrders.base(%w[monday tuesday], ['omni'], ['home_office'])
     base.add('monday', 'omni', 'home_office', 10)
     base.add('tuesday', 'omni', 'home_office', 1)
     expected_menu_orders = {
@@ -62,7 +62,7 @@ end
 
 describe 'To hash' do
   it 'should export the base menu orders when passing one day, one choice and one office' do
-    menu_orders = MenuOrders.base(%w(monday), %w(omni), %w(home_office))
+    menu_orders = MenuOrders.base(%w[monday], %w[omni], %w[home_office])
     expected_hash = {
       monday: {
         omni: {
@@ -75,7 +75,7 @@ describe 'To hash' do
   end
 
   it 'should export the base menu orders when passing one day, one choice and two offices' do
-    menu_orders = MenuOrders.base(%w(monday), %w(omni), %w(home_office beach_house))
+    menu_orders = MenuOrders.base(%w[monday], %w[omni], %w[home_office beach_house])
     expected_hash = {
       monday: {
         omni: {
@@ -89,7 +89,7 @@ describe 'To hash' do
   end
 
   it 'should export the base menu orders when passing one day, two choices and two offices' do
-    menu_orders = MenuOrders.base(%w(monday), %w(omni veggie), %w(home_office beach_house))
+    menu_orders = MenuOrders.base(%w[monday], %w[omni veggie], %w[home_office beach_house])
     expected_hash = {
       monday: {
         omni: {
@@ -108,7 +108,7 @@ describe 'To hash' do
   end
 
   it 'should export the base menu orders when passing two days, two choices and two offices' do
-    menu_orders = MenuOrders.base(%w(monday tuesday), %w(omni veggie), %w(home_office beach_house))
+    menu_orders = MenuOrders.base(%w[monday tuesday], %w[omni veggie], %w[home_office beach_house])
     expected_hash = {
       monday: {
         omni: {

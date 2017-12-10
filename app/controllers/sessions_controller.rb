@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  layout 'simple', only: [:new, :create]
-  skip_before_filter :require_login, only: [:new, :create]
+  layout 'simple', only: %i[new create]
+  skip_before_filter :require_login, only: %i[new create]
 
   def new
     redirect_to menus_path if logged_in?
