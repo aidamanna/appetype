@@ -19,6 +19,7 @@
           <div class="pull-right">
             <%= link_to 'View', user_path(user), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
             <%= link_to 'Edit', edit_user_path(user), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
+            <%= link_to 'Delete', user, method: :delete, data: { confirm: "Are you sure you want to permanently delete the user: #{user.email}?"}, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           </div>
         </div>
     <% end %>

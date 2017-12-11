@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'simple', only: %i[new create]
   skip_before_filter :require_login, only: %i[new create]
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update destroy]
   load_and_authorize_resource except: %i[new create]
 
   def index
@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = "User '#{@user.email}' deleted"
+    else
+      flash[:danger] = "Error deleting the user '#{@user.email}'"
+    end
+    redirect_to users_path
   end
 
   private
