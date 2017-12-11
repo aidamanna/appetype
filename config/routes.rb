@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     put 'close', on: :member
   end
 
-  get 'signup', to: 'users#new'
-  resources :users, except: [:new]
+  resources :users
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
