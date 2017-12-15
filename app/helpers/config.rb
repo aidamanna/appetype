@@ -15,10 +15,6 @@ module Config
     ENV['BASE_URL']
   end
 
-  def self.webhook_url
-    ENV['BASE_URL'] + '/webhooks/orders'
-  end
-
   def self.forms_endpoint
     'https://api.typeform.com/forms'
   end

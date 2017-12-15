@@ -1,7 +1,7 @@
 class CreateWebhook
   def initialize(form_uid)
     webhooks_payload = {
-      url: Config.webhook_url,
+      url: Config.base_url + '/webhooks/orders',
       enabled: true
     }.to_json
 
