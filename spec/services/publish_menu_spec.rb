@@ -1,4 +1,4 @@
-describe 'PublishMenu' do
+describe PublishMenu do
   describe '#call' do
     it 'publishes a menu' do
       given_a_menu
