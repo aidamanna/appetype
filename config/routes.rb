@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get 'menus/:id/orders', to: 'menu_orders#show', as: 'menu_orders'
 
   get 'oauth/authorize', to: 'oauth_authorize#call', as: 'oauth_authorize'
+  get 'oauth/token', to: 'oauth_token#call', as: 'oauth_token'
 end

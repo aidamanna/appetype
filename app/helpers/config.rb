@@ -7,6 +7,10 @@ module Config
     ENV['TYPEFORM_CLIENT_ID']
   end
 
+  def self.typeform_client_secret
+    ENV['TYPEFORM_CLIENT_SECRET']
+  end
+
   def self.base_url
     ENV['BASE_URL']
   end
