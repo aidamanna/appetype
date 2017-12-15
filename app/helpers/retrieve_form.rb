@@ -2,7 +2,7 @@ class RetrieveForm
   attr_reader :form_definition
 
   def initialize(form_id)
-    response = RestClient.get("#{Config.forms_endpoint}/#{form_id}")
+    response = RestClient.get("#{Config.typeform_base_endpoint}/forms/#{form_id}")
 
     @form_definition = JSON.parse(response.body, symbolize_names: true)
   rescue RestClient::Exception => err

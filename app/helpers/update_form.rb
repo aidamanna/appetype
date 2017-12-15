@@ -3,7 +3,7 @@ class UpdateForm
     form_payload = menu.to_form_payload
 
     RestClient.put(
-      Config.forms_endpoint + "/#{menu.form}",
+      Config.typeform_base_endpoint + "/forms/#{menu.form}",
       form_payload,
       'Authorization' => Config.auth_token
     )

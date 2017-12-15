@@ -6,7 +6,7 @@ class CreateWebhook
     }.to_json
 
     RestClient.put(
-      Config.forms_endpoint + "/#{form_uid}/webhooks/appetype",
+      Config.typeform_base_endpoint + "/forms/#{form_uid}/webhooks/appetype",
       webhooks_payload,
       'Authorization' => Config.auth_token
     )

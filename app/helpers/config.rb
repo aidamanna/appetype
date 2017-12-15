@@ -15,10 +15,6 @@ module Config
     ENV['BASE_URL']
   end
 
-  def self.forms_endpoint
-    'https://api.typeform.com/forms'
-  end
-
   def self.typeform_base_endpoint
     'https://api.typeform.com'
   end

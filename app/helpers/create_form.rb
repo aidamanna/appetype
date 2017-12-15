@@ -5,7 +5,7 @@ class CreateForm
     form_payload = menu.to_form_payload
 
     response = RestClient.post(
-      Config.forms_endpoint,
+      Config.typeform_base_endpoint + '/forms',
       form_payload,
       'Authorization' => Config.auth_token
     )
