@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   post 'webhooks/orders', to: 'webhook_orders#create'
   get 'menus/:id/orders', to: 'menu_orders#show', as: 'menu_orders'
+
+  get 'oauth/authorize', to: 'oauth_authorize#call', as: 'oauth_authorize'
 end
