@@ -1,10 +1,10 @@
-class OauthTokenController < ApplicationController
-  authorize_resource class: OauthTokenController
+class CreateOauthTokenController < ApplicationController
+  authorize_resource class: CreateOauthTokenController
 
   def call
     begin
       temp_auth_code = params[:code]
-      OauthToken.new.call(temp_auth_code)
+      OauthTokenCreator.new.call(temp_auth_code)
       flash[:success] = 'Appetype is authorized to use Typeform'
     rescue => err
       puts "Error getting the token to use Typeform. Error: #{err}"

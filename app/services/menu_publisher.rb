@@ -1,4 +1,4 @@
-class PublishMenu
+class MenuPublisher
   def call(menu_id)
     menu = Menu.find(menu_id)
     form_uid = CreateForm.new(menu).form_uid

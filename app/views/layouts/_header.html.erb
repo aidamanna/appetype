@@ -21,7 +21,7 @@
               <li><%= link_to 'User management', users_path %></li>
               <li class="divider"></li>
             <% end %>
-            <% if can? :call, OauthAuthorizeController%>
+            <% if can? :call, AuthorizeOauthController%>
               <li><%= link_to 'Authorize', oauth_authorize_path %></li>
               <li class="divider"></li>
             <% end %>

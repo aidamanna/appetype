@@ -1,5 +1,5 @@
-class OauthAuthorizeController < ApplicationController
-  authorize_resource class: OauthAuthorizeController
+class AuthorizeOauthController < ApplicationController
+  authorize_resource class: AuthorizeOauthController
 
   def call
     redirect_uri = Config.base_url + '/oauth/token'

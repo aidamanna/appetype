@@ -1,9 +1,9 @@
 class PublishMenuController < ApplicationController
   authorize_resource class: PublishMenuController
 
-  def invoke
+  def call
     begin
-      PublishMenu.new.call(params[:id])
+      MenuPublisher.new.call(params[:id])
       flash[:success] = 'Menu published'
     rescue => err
       puts "Error publishing the menu. Error: #{err}"

@@ -1,4 +1,4 @@
-describe PublishMenu do
+describe MenuPublisher do
   describe '#call' do
     it 'publishes a menu' do
       given_a_menu
@@ -32,6 +32,6 @@ describe PublishMenu do
   end
 
   def when_publishing_the_menu
-    PublishMenu.new.call(2)
+    MenuPublisher.new.call(2)
   end
 end

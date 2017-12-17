@@ -1,4 +1,4 @@
-describe OauthToken do
+describe OauthTokenCreator do
   describe '#call' do
     it 'gets a token' do
       it_gets_the_token
@@ -23,6 +23,6 @@ describe OauthToken do
   end
 
   def when_retrieving_the_token
-    OauthToken.new.call('aBc')
+    OauthTokenCreator.new.call('aBc')
   end
 end

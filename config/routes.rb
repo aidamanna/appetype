@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  put 'menus/:id/publish', to: 'publish_menu#invoke', as: 'publish_menu'
+  put 'menus/:id/publish', to: 'publish_menu#call', as: 'publish_menu'
 
   resources :menus do
     get 'fill', on: :member
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   post 'webhooks/orders', to: 'webhook_orders#create'
   get 'menus/:id/orders', to: 'menu_orders#show', as: 'menu_orders'
 
-  get 'oauth/authorize', to: 'oauth_authorize#call', as: 'oauth_authorize'
-  get 'oauth/token', to: 'oauth_token#call', as: 'oauth_token'
+  get 'oauth/authorize', to: 'authorize_oauth#call', as: 'oauth_authorize'
+  get 'oauth/token', to: 'create_oauth_token#call', as: 'oauth_token'
 end
