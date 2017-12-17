@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_171_212_151_602) do
+ActiveRecord::Schema.define(version: 20_171_217_160_301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -29,9 +29,8 @@ ActiveRecord::Schema.define(version: 20_171_212_151_602) do
     t.json    'daily_orders'
   end
 
-  create_table 'settings', force: :cascade do |t|
-    t.string 'name'
-    t.string 'value'
+  create_table 'tokens', primary_key: 'user_id', id: :integer, force: :cascade do |t|
+    t.string 'oauth_token'
   end
 
   create_table 'users', force: :cascade do |t|
