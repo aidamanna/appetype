@@ -1,34 +1,34 @@
 describe OauthTokenCreator do
   describe '#call' do
-    it 'saves the token when there is no previous token' do
-      given_a_user_without_a_token
-      it_gets_the_token
+    it 'saves the oauth token when there is no previous one' do
+      given_a_user_without_a_oauth_token
+      it_gets_the_oauth_token
       and_it_saves_it_to_the_db
-      when_creating_the_token
+      when_creating_the_oauth_token
     end
 
-    it 'updates the token when there is a previous token' do
-      given_a_user_with_a_token
-      it_gets_the_token
+    it 'updates the oauth token when there is a previous one' do
+      given_a_user_with_a_oauth_token
+      it_gets_the_oauth_token
       and_it_updates_it_in_the_db
-      when_creating_the_token
+      when_creating_the_oauth_token
     end
   end
 
   private
 
-  def given_a_user_without_a_token
+  def given_a_user_without_a_oauth_token
     @user_id = 1
     allow(Token).to receive(:find_by_user_id).with(@user_id).and_return(nil)
   end
 
-  def given_a_user_with_a_token
+  def given_a_user_with_a_oauth_token
     @token = double
     @user_id = 1
     allow(Token).to receive(:find_by_user_id).with(@user_id).and_return(@token)
   end
 
-  def it_gets_the_token
+  def it_gets_the_oauth_token
     oauth_client = double
     allow(OauthClient).to receive(:new).and_return(oauth_client)
     @oauth_token = 'xYZ'
@@ -43,7 +43,7 @@ describe OauthTokenCreator do
     allow(@token).to receive(:update).with(oauth_token: @oauth_token)
   end
 
-  def when_creating_the_token
+  def when_creating_the_oauth_token
     OauthTokenCreator.new.call(@user_id, 'aBc')
   end
 end

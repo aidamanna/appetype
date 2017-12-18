@@ -1,6 +1,6 @@
 describe OauthTokenRetriever do
   describe '#call' do
-    it 'retrieves the token' do
+    it 'retrieves the oauth token' do
       user_id = 1
       token = double
       allow(Token).to receive(:find_by_user_id).with(user_id).and_return(token)
