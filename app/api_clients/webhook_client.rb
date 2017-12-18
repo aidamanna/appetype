@@ -1,13 +1,8 @@
-class CreateWebhook
-  def initialize(user_id, form_uid)
-    webhooks_payload = {
-      url: Config.base_url + '/webhooks/orders',
-      enabled: true
-    }.to_json
-
+class WebhookClient
+  def create(user_id, form_uid)
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{form_uid}/webhooks/appetype",
-      webhooks_payload,
+      payload,
       'Authorization' => OauthTokenRetriever.new.call(user_id)
     )
   rescue RestClient::Exception => err
@@ -16,5 +11,12 @@ class CreateWebhook
          "Response body: #{err.http_body}"
 
     raise 'The webhook cannot be created'
+  end
+
+  def payload
+    {
+      url: Config.base_url + '/webhooks/orders',
+      enabled: true
+    }.to_json
   end
 end

@@ -24,7 +24,9 @@ describe MenuPublisher do
   end
 
   def and_configures_a_webhook
-    allow(CreateWebhook).to receive(:new)
+    webhook_client = double
+    allow(WebhookClient).to receive(:new).and_return(webhook_client)
+    allow(webhook_client).to receive(:create)
   end
 
   def and_the_menu_is_set_to_published
