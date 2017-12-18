@@ -3,7 +3,7 @@ class PublishMenuController < ApplicationController
 
   def call
     begin
-      MenuPublisher.new.call(params[:id])
+      MenuPublisher.new.call(current_user.id, params[:id])
       flash[:success] = 'Menu published'
     rescue => err
       puts "Error publishing the menu. Error: #{err}"

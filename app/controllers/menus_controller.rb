@@ -39,7 +39,7 @@ class MenusController < ApplicationController
   def close
     begin
       @menu.state = 'closed'
-      UpdateForm.new(@menu)
+      UpdateForm.new(current_user.id, @menu)
       @menu.save
       flash[:success] = "Menu '#{@menu.week_description}' closed"
     rescue => err

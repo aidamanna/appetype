@@ -1,5 +1,5 @@
 class CreateWebhook
-  def initialize(form_uid)
+  def initialize(user_id, form_uid)
     webhooks_payload = {
       url: Config.base_url + '/webhooks/orders',
       enabled: true
@@ -8,7 +8,7 @@ class CreateWebhook
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{form_uid}/webhooks/appetype",
       webhooks_payload,
-      'Authorization' => Config.auth_token
+      'Authorization' => OauthTokenRetriever.new.call(user_id)
     )
   rescue RestClient::Exception => err
     puts "Error creating the webhook for the form with id: #{menu.id} " \

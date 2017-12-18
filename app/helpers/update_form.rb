@@ -1,11 +1,11 @@
 class UpdateForm
-  def initialize(menu)
+  def initialize(user_id, menu)
     form_payload = menu.to_form_payload
 
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{menu.form}",
       form_payload,
-      'Authorization' => Config.auth_token
+      'Authorization' => OauthTokenRetriever.new.call(user_id)
     )
   rescue RestClient::Exception => err
     puts "Error closing the form with id: #{menu.id} " \

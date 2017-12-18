@@ -1,13 +1,13 @@
 class CreateForm
   attr_reader :form_uid
 
-  def initialize(menu)
+  def initialize(user_id, menu)
     form_payload = menu.to_form_payload
 
     response = RestClient.post(
       Config.typeform_base_endpoint + '/forms',
       form_payload,
-      'Authorization' => Config.auth_token
+      'Authorization' => OauthTokenRetriever.new.call(user_id)
     )
 
     @form_uid = JSON.parse(response.body, symbolize_names: true)[:id]

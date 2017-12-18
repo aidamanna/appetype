@@ -32,6 +32,6 @@ describe MenuPublisher do
   end
 
   def when_publishing_the_menu
-    MenuPublisher.new.call(2)
+    MenuPublisher.new.call(1, 2)
   end
 end

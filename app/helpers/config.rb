@@ -1,8 +1,4 @@
 module Config
-  def self.auth_token
-    ENV['AUTH_TOKEN']
-  end
-
   def self.typeform_client_id
     ENV['TYPEFORM_CLIENT_ID']
   end
