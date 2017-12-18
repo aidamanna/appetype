@@ -20,7 +20,9 @@ describe MenuPublisher do
     form = double
     @form_uid = 1
     allow(form).to receive(:form_uid).and_return(@form_uid)
-    allow(CreateForm).to receive(:new).and_return(form)
+    form_client = double
+    allow(FormClient).to receive(:new).and_return(form_client)
+    allow(form_client).to receive(:create).and_return(@form_uid)
   end
 
   def and_configures_a_webhook
