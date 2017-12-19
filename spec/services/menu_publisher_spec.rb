@@ -15,6 +15,7 @@ describe MenuPublisher do
   def given_a_menu
     @menu = double
     allow(Menu).to receive(:find).and_return(@menu)
+    allow(@menu).to receive(:to_form_payload)
   end
 
   def and_a_user

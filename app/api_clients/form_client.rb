@@ -1,28 +1,28 @@
 class FormClient < TypeformApiClient
-  def create(menu)
+  def create(form_payload)
     response = RestClient.post(
       Config.typeform_base_endpoint + '/forms',
-      payload(menu),
+      form_payload,
       'Authorization' => oauth_token
     )
 
     JSON.parse(response.body, symbolize_names: true)[:id]
   rescue RestClient::Exception => err
-    puts "Error publishing the form with id: #{menu.id} " \
+    puts "Error publishing the form" \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
     raise 'The form cannot be created'
   end
 
-  def update(menu)
+  def update(form_uid, form_payload)
     RestClient.put(
-      Config.typeform_base_endpoint + "/forms/#{menu.form}",
-      payload(menu),
+      Config.typeform_base_endpoint + "/forms/#{form_uid}",
+      form_payload,
       'Authorization' => oauth_token
     )
   rescue RestClient::Exception => err
-    puts "Error closing the form with id: #{menu.id} " \
+    puts "Error closing the form" \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
@@ -34,15 +34,11 @@ class FormClient < TypeformApiClient
 
     JSON.parse(response.body, symbolize_names: true)
   rescue RestClient::Exception => err
-    puts "Error retrieving form with id: #{form_id} " \
+    puts "Error retrieving form" \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
     raise 'The form cannot be retrieved'
-  end
-
-  def payload(menu)
-    menu.to_form_payload
   end
 
   private
