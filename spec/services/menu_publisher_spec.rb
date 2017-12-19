@@ -2,6 +2,7 @@ describe MenuPublisher do
   describe '#call' do
     it 'publishes a menu' do
       given_a_menu
+      and_a_user
       then_it_creates_a_form
       and_configures_a_webhook
       and_the_menu_is_set_to_published
@@ -14,6 +15,12 @@ describe MenuPublisher do
   def given_a_menu
     @menu = double
     allow(Menu).to receive(:find).and_return(@menu)
+  end
+
+  def and_a_user
+    oauth_token = double
+    allow(OauthTokenRetriever).to receive(:new).and_return(oauth_token)
+    allow(oauth_token).to receive(:call)
   end
 
   def then_it_creates_a_form

@@ -39,7 +39,8 @@ class MenusController < ApplicationController
   def close
     begin
       @menu.state = 'closed'
-      UpdateForm.new(current_user.id, @menu)
+      oauth_token = OauthTokenRetriever.new.call(current_user.id)
+      FormClient.new(oauth_token).update(@menu)
       @menu.save
       flash[:success] = "Menu '#{@menu.week_description}' closed"
     rescue => err

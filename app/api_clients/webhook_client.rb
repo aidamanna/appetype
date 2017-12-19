@@ -1,9 +1,9 @@
-class WebhookClient
-  def create(user_id, form_uid)
+class WebhookClient < TypeformApiClient
+  def create(form_uid)
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{form_uid}/webhooks/appetype",
       payload,
-      'Authorization' => OauthTokenRetriever.new.call(user_id)
+      'Authorization' => oauth_token
     )
   rescue RestClient::Exception => err
     puts "Error creating the webhook for the form with id: #{menu.id} " \
@@ -19,4 +19,8 @@ class WebhookClient
       enabled: true
     }.to_json
   end
+
+  private
+
+  attr_reader :oauth_token
 end

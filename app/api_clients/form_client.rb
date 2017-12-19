@@ -1,9 +1,9 @@
-class FormClient
-  def create(user_id, menu)
+class FormClient < TypeformApiClient
+  def create(menu)
     response = RestClient.post(
       Config.typeform_base_endpoint + '/forms',
       payload(menu),
-      'Authorization' => OauthTokenRetriever.new.call(user_id)
+      'Authorization' => oauth_token
     )
 
     JSON.parse(response.body, symbolize_names: true)[:id]
@@ -15,11 +15,11 @@ class FormClient
     raise 'The form cannot be created'
   end
 
-  def update(user_id, menu)
+  def update(menu)
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{menu.form}",
       payload(menu),
-      'Authorization' => OauthTokenRetriever.new.call(user_id)
+      'Authorization' => oauth_token
     )
   rescue RestClient::Exception => err
     puts "Error closing the form with id: #{menu.id} " \
@@ -44,4 +44,8 @@ class FormClient
   def payload(menu)
     menu.to_form_payload
   end
+
+  private
+
+  attr_reader :oauth_token
 end
