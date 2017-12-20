@@ -18,32 +18,29 @@ describe OauthTokenCreator do
   private
 
   def given_a_user_without_a_oauth_token
-    @user_id = 1
-    allow(Token).to receive(:find_by_user_id).with(@user_id).and_return(nil)
+    allow(Token).to receive(:find_by_user_id).and_return(nil)
   end
 
   def given_a_user_with_a_oauth_token
-    @token = double
-    @user_id = 1
-    allow(Token).to receive(:find_by_user_id).with(@user_id).and_return(@token)
+    @token = double(:token)
+    allow(Token).to receive(:find_by_user_id).and_return(@token)
   end
 
   def it_gets_the_oauth_token
-    oauth_client = double
+    oauth_client = double(:oauth_client)
     allow(OauthClient).to receive(:new).and_return(oauth_client)
-    @oauth_token = 'xYZ'
-    allow(oauth_client).to receive(:retrieve_token).and_return(@oauth_token)
+    expect(oauth_client).to receive(:retrieve_token)
   end
 
   def and_it_saves_it_to_the_db
-    allow(Token).to receive(:create).with(user_id: @user_id, oauth_token: @oauth_token)
+    expect(Token).to receive(:create)
   end
 
   def and_it_updates_it_in_the_db
-    allow(@token).to receive(:update).with(oauth_token: @oauth_token)
+    expect(@token).to receive(:update)
   end
 
   def when_creating_the_oauth_token
-    OauthTokenCreator.new.call(@user_id, 'aBc')
+    OauthTokenCreator.new.call(1, 'aBc')
   end
 end
