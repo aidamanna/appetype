@@ -10,7 +10,7 @@ describe WebhookClient do
       WebhookClient.new(oauth_token).create(form_uid)
 
       expect(WebMock).to have_requested(:put, url)
-        .with(headers: { 'Authorization' => oauth_token},
+        .with(headers: { 'Authorization' => oauth_token },
               body: {
                 url: Config.base_url + '/webhooks/orders',
                 enabled: true

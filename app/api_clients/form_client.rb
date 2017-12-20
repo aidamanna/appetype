@@ -8,7 +8,7 @@ class FormClient < TypeformApiClient
 
     JSON.parse(response.body, symbolize_names: true)[:id]
   rescue RestClient::Exception => err
-    puts "Error publishing the form" \
+    puts 'Error publishing the form' \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
@@ -22,7 +22,7 @@ class FormClient < TypeformApiClient
       'Authorization' => oauth_token
     )
   rescue RestClient::Exception => err
-    puts "Error closing the form" \
+    puts 'Error closing the form' \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
@@ -34,7 +34,7 @@ class FormClient < TypeformApiClient
 
     JSON.parse(response.body, symbolize_names: true)
   rescue RestClient::Exception => err
-    puts "Error retrieving form" \
+    puts 'Error retrieving form' \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
