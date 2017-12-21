@@ -1,14 +1,9 @@
-class WebhookOrdersController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :require_login
+class WebhookOrderProcessor
+  def call(webhook_order)
+    return if event_already_processed?(webhook_order[:event_id])
 
-  def create
-    request_body = JSON.parse(request.body.read, symbolize_names: true)
-    return if event_already_processed?(request_body[:event_id])
-
-    form_response = request_body[:form_response]
-
-    create_order(form_response)
-    create_webhook(form_response, request_body)
+    create_order(webhook_order[:form_response])
+    create_webhook(webhook_order)
   end
 
   private
@@ -22,9 +17,9 @@ class WebhookOrdersController < ApplicationController
     daily_orders_refs = daily_order_refs(form_id, form_response)
 
     Order.create(
-      menu_id: menu_id(form_id),
-      user_id: user_id(form_response),
-      daily_orders: daily_orders(daily_orders_refs)
+        menu_id: menu_id(form_id),
+        user_id: user_id(form_response),
+        daily_orders: daily_orders(daily_orders_refs)
     )
   end
 
@@ -62,11 +57,11 @@ class WebhookOrdersController < ApplicationController
     daily_orders
   end
 
-  def create_webhook(form_response, request_body)
+  def create_webhook(webhook_order)
     Webhook.create(
-      event_id: request_body[:event_id],
-      event_type: request_body[:event_type],
-      form_response: form_response
+        event_id: webhook_order[:event_id],
+        event_type: webhook_order[:event_type],
+        form_response: webhook_order[:form_response]
     )
   end
 end
