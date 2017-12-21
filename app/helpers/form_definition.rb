@@ -1,4 +1,4 @@
-class Form
+class FormDefinition
   def initialize(form_definition)
     @form_definition = form_definition
   end
@@ -13,7 +13,7 @@ class Form
   private
 
   def multiple_choice_with_id(field_id)
-    field = @form_definition[:fields].find { |f| f[:id] == field_id && f[:type] == 'multiple_choice' }
+    field = form_definition[:fields].find { |f| f[:id] == field_id && f[:type] == 'multiple_choice' }
 
     raise "No field with id: #{field_id}" if field.nil?
     field
@@ -25,4 +25,8 @@ class Form
     raise "No choice with label: #{choice_label}" if choice.nil?
     choice
   end
+
+  private
+
+  attr_reader :form_definition
 end

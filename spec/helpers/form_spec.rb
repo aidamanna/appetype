@@ -1,8 +1,8 @@
-describe Form do
+describe FormDefinition do
   describe '#choice_with_label' do
     it 'fails if the form does not have fields' do
       form_definition = { fields: [] }
-      form = Form.new(form_definition)
+      form = FormDefinition.new(form_definition)
       expect { form.choice_ref('1', 'Home office - Omni') }.to raise_error 'No field with id: 1'
     end
 
@@ -21,7 +21,7 @@ describe Form do
           }
         ]
       }
-      form = Form.new(form_definition)
+      form = FormDefinition.new(form_definition)
       expect { form.choice_ref('1', 'Home office - Omni') }
         .to raise_error 'No choice with label: Home office - Omni'
     end
@@ -41,7 +41,7 @@ describe Form do
           }
         ]
       }
-      form = Form.new(form_definition)
+      form = FormDefinition.new(form_definition)
       expect(form.choice_ref('1', 'Home office - Omni')).to eql('monday-home-omni')
     end
   end

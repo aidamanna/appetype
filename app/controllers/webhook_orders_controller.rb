@@ -40,7 +40,7 @@ class WebhookOrdersController < ApplicationController
 
   def form_with(form_id)
     form_definition = FormClient.new.retrieve(form_id)
-    Form.new(form_definition)
+    FormDefinition.new(form_definition)
   end
 
   def menu_id(form_id)
