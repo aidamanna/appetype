@@ -13,14 +13,14 @@ class WebhookClient < TypeformApiClient
     raise 'The webhook cannot be created'
   end
 
+  private
+
+  attr_reader :oauth_token
+
   def payload
     {
       url: Config.base_url + '/webhooks/orders',
       enabled: true
     }.to_json
   end
-
-  private
-
-  attr_reader :oauth_token
 end

@@ -15,6 +15,8 @@ class OauthClient
     raise 'The token cannot be retrieved'
   end
 
+  private
+
   def payload(temp_auth_code)
     URI.encode_www_form(
       'code' => temp_auth_code,
