@@ -15,7 +15,7 @@ describe MenuPublisher do
   def given_a_menu
     @menu = double(:menu)
     allow(Menu).to receive(:find).and_return(@menu)
-    allow(@menu).to receive(:to_form_payload)
+    allow(@menu).to receive(:to_payload)
   end
 
   def and_a_user
@@ -25,6 +25,10 @@ describe MenuPublisher do
   end
 
   def then_it_creates_a_form
+    form = double(:form)
+    allow(Form).to receive(:from_menu).and_return(form)
+    allow(form).to receive(:to_payload)
+
     form_client = double(:form_client)
     allow(FormClient).to receive(:new).and_return(form_client)
     expect(form_client).to receive(:create)
