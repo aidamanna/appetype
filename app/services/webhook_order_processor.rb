@@ -17,9 +17,9 @@ class WebhookOrderProcessor
     daily_orders_refs = daily_order_refs(form_id, form_response)
 
     Order.create(
-        menu_id: menu_id(form_id),
-        user_id: user_id(form_response),
-        daily_orders: daily_orders(daily_orders_refs)
+      menu_id: menu_id(form_id),
+      user_id: user_id(form_response),
+      daily_orders: daily_orders(daily_orders_refs)
     )
   end
 
@@ -59,9 +59,9 @@ class WebhookOrderProcessor
 
   def create_webhook(webhook_order)
     Webhook.create(
-        event_id: webhook_order[:event_id],
-        event_type: webhook_order[:event_type],
-        form_response: webhook_order[:form_response]
+      event_id: webhook_order[:event_id],
+      event_type: webhook_order[:event_type],
+      form_response: webhook_order[:form_response]
     )
   end
 end
