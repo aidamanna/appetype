@@ -5,7 +5,7 @@ describe MenuPublisher do
       and_a_user
       then_it_creates_a_form
       and_configures_a_webhook
-      and_the_menu_is_set_to_published
+      and_it_sets_the_menu_to_published
       when_publishing_the_menu
     end
   end
@@ -36,7 +36,7 @@ describe MenuPublisher do
     expect(webhook_client).to receive(:create)
   end
 
-  def and_the_menu_is_set_to_published
+  def and_it_sets_the_menu_to_published
     expect(@menu).to receive(:update).with(hash_including(state: 'published'))
   end
 
