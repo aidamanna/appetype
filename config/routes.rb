@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   put 'menus/:id/publish', to: 'publish_menu#call', as: 'publish_menu'
+  put 'menus/:id/close', to: 'close_menu#call', as: 'close_menu'
 
   resources :menus do
     get 'fill', on: :member
-    put 'close', on: :member
   end
 
   resources :users
