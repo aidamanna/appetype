@@ -1,8 +1,8 @@
-require_relative '../../app/models/menu_orders'
+require_relative '../../app/models/orders_base'
 
-class MenuOrdersCounter
+class OrdersCounter
   def self.from_records(records)
-    orders = MenuOrders.base(
+    orders = OrdersBase.create(
       %w[monday tuesday wednesday thursday friday],
       %w[omni veggie out],
       %w[home beach]

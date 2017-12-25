@@ -1,5 +1,5 @@
-class MenuOrdersController < ApplicationController
-  authorize_resource class: MenuOrdersController
+class OrdersController < ApplicationController
+  authorize_resource class: OrdersController
 
   def show
     @menu = Menu.find(params[:id])
@@ -14,6 +14,6 @@ class MenuOrdersController < ApplicationController
           group by day, office, choice;"
     records_array = ActiveRecord::Base.connection.execute(sql).values
 
-    @menu_orders = MenuOrdersCounter.from_records(records_array)
+    @orders = OrdersCounter.from_records(records_array)
   end
 end

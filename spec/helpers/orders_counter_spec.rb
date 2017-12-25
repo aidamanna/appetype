@@ -1,7 +1,7 @@
-describe MenuOrdersCounter do
+describe OrdersCounter do
   describe '.from_records' do
     it 'returns the default hash given an empty array' do
-      expected_menu_order = {
+      expected_order = {
         monday: {
           omni: { home: 0, beach: 0, total: 0 },
           veggie: { home: 0, beach: 0, total: 0 },
@@ -28,12 +28,12 @@ describe MenuOrdersCounter do
           out: { home: 0, beach: 0, total: 0 }
         }
       }
-      expect(MenuOrdersCounter.from_records([])).to eql(expected_menu_order)
+      expect(OrdersCounter.from_records([])).to eql(expected_order)
     end
 
-    it 'returns a menu order' do
+    it 'returns an order' do
       records = [['friday', 'omni', 'beach', 1]]
-      expected_menu_order = {
+      expected_order = {
         monday: {
           omni: { home: 0, beach: 0, total: 0 },
           veggie: { home: 0, beach: 0, total: 0 },
@@ -60,8 +60,8 @@ describe MenuOrdersCounter do
           out: { home: 0, beach: 0, total: 0 }
         }
       }
-      menu_orders = MenuOrdersCounter.from_records(records)
-      expect(menu_orders).to eql(expected_menu_order)
+      orders = OrdersCounter.from_records(records)
+      expect(orders).to eql(expected_order)
     end
   end
 end
