@@ -6,7 +6,7 @@ class WebhookClient < TypeformApiClient
       'Authorization' => oauth_token
     )
   rescue RestClient::Exception => err
-    puts "Error creating the webhook for the form with id: #{menu.id} " \
+    puts "Error creating the webhook for the form with id: #{form_uid} " \
          "Response code: #{err.http_code} " \
          "Response body: #{err.http_body}"
 
