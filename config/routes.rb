@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
+  get 'menus', to: 'index_menus#call', as: 'menus'
   put 'menus/:id/publish', to: 'publish_menu#call', as: 'publish_menu'
   put 'menus/:id/close', to: 'close_menu#call', as: 'close_menu'
 
-  resources :menus do
+  resources :menus, except: [:index] do
     get 'fill', on: :member
   end
 

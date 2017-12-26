@@ -16,12 +16,14 @@ class Ability
   end
 
   def catering_user_actions(user)
+    can %i[call], IndexMenusController
     can %i[read create update], Menu
     can %i[call], ShowOrdersController
     can %i[show update], User, id: user.id
   end
 
   def diner_user_actions(user)
+    can %i[call], IndexMenusController
     can %i[read fill], Menu
     can %i[show update], User, id: user.id
   end
