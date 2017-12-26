@@ -11,8 +11,8 @@ module Appetype
   class Application < Rails::Application
     config.autoload_paths << "#{Rails.root}/app/helpers"
 
-    Dir["#{Rails.root}/app/controllers/*"].each {|file| config.autoload_paths << file }
-    Dir["#{Rails.root}/app/services/*"].each {|file| config.autoload_paths << file }
+    Dir["#{Rails.root}/app/controllers/*"].each { |file| config.autoload_paths << file }
+    Dir["#{Rails.root}/app/services/*"].each { |file| config.autoload_paths << file }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

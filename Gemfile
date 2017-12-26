@@ -52,8 +52,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'simplecov', require: false
   gem 'webmock'
-  gem 'simplecov', :require => false
 end
 
 group :development do
