@@ -30,12 +30,12 @@
           <% if can? :close, Menu %>
             <%= link_to 'Close', close_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
-          <% if can? :show, OrdersController %>
+          <% if can? :call, ShowOrdersController %>
             <%= link_to 'Results', orders_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
         <% end %>
         <% if menu.state == 'closed' %>
-          <% if can? :show, OrdersController %>
+          <% if can? :call, ShowOrdersController %>
             <%= link_to 'Results', orders_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
         <% end %>
