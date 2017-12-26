@@ -9,14 +9,16 @@ class DailyOrder
 
   def to_hash
     {
-      @day.to_sym => {
-        office: @office,
-        choice: @choice
+      day.to_sym => {
+        office: office,
+        choice: choice
       }
     }
   end
 
   private
+
+  attr_reader :day, :office, :choice
 
   def initialize(day, office, choice)
     @day = day
