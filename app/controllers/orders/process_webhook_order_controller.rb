@@ -1,5 +1,5 @@
 class ProcessWebhookOrderController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :require_login
+  skip_before_action :verify_authenticity_token, :require_login
 
   def call
     webhook_order = JSON.parse(request.body.read, symbolize_names: true)
