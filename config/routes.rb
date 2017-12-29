@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  post 'webhooks/orders', to: 'process_webhook_order#call'
-  get 'menus/:id/orders', to: 'show_orders#call', as: 'orders'
+  scope module: 'orders' do
+    post 'webhooks/orders', to: 'process_webhook#call'
+    get 'menus/:id/orders', to: 'show#call', as: 'orders'
+  end
 
   scope module: 'oauth' do
     get 'oauth/authorize', to: 'authorize_user#call', as: 'oauth_authorize'

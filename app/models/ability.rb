@@ -18,7 +18,7 @@ class Ability
   def catering_user_actions(user)
     can %i[call], Menus::IndexController
     can %i[read create update], Menu
-    can %i[call], ShowOrdersController
+    can %i[call], Orders::ShowController
     can %i[show update], User, id: user.id
   end
 
