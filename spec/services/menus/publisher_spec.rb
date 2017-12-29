@@ -2,7 +2,6 @@ describe Menus::Publisher do
   describe '#call' do
     it 'publishes a menu' do
       given_a_menu
-      and_a_user
       then_it_creates_a_form
       and_configures_a_webhook
       and_it_sets_the_menu_to_published
@@ -18,22 +17,14 @@ describe Menus::Publisher do
     allow(@menu).to receive(:to_form_payload)
   end
 
-  def and_a_user
-    oauth_token = double(:oauth_token)
-    allow(Oauth::TokenRetriever).to receive(:new).and_return(oauth_token)
-    allow(oauth_token).to receive(:call)
-  end
-
   def then_it_creates_a_form
-    form_client = double(:form_client)
-    allow(FormClient).to receive(:new).and_return(form_client)
-    expect(form_client).to receive(:create)
+    @form_client = double(:form_client)
+    expect(@form_client).to receive(:create)
   end
 
   def and_configures_a_webhook
-    webhook_client = double(:webhook_client)
-    allow(WebhookClient).to receive(:new).and_return(webhook_client)
-    expect(webhook_client).to receive(:create)
+    @webhook_client = double(:webhook_client)
+    expect(@webhook_client).to receive(:create)
   end
 
   def and_it_sets_the_menu_to_published
@@ -41,6 +32,6 @@ describe Menus::Publisher do
   end
 
   def when_publishing_the_menu
-    Menus::Publisher.new.call(1, 2)
+    Menus::Publisher.new(@form_client, @webhook_client).call(1)
   end
 end

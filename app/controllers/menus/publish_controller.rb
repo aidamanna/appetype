@@ -4,7 +4,10 @@ module Menus
 
     def call
       begin
-        Menus::Publisher.new.call(current_user.id, params[:id])
+        oauth_token = Oauth::TokenRetriever.new.call(current_user.id)
+        form_client = FormClient.new(oauth_token)
+        webhook_client = WebhookClient.new(oauth_token)
+        Menus::Publisher.new(form_client, webhook_client).call(params[:id])
         flash[:success] = 'Menu published'
       rescue => err
         puts "Error publishing the menu. Error: #{err}"
