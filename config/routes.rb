@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  get 'menus', to: 'index_menus#call', as: 'menus'
+  scope module: 'menus' do
+    get 'menus', to: 'index#call', as: 'menus'
+  end
   put 'menus/:id/publish', to: 'publish_menu#call', as: 'publish_menu'
   put 'menus/:id/close', to: 'close_menu#call', as: 'close_menu'
 
