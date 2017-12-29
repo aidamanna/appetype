@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   scope module: 'menus' do
     get 'menus', to: 'index#call', as: 'menus'
+    put 'menus/:id/close', to: 'close#call', as: 'close_menu'
+    put 'menus/:id/publish', to: 'publish#call', as: 'publish_menu'
   end
-  put 'menus/:id/publish', to: 'publish_menu#call', as: 'publish_menu'
-  put 'menus/:id/close', to: 'close_menu#call', as: 'close_menu'
 
   resources :menus, except: [:index] do
     get 'fill', on: :member
