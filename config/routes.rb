@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post 'webhooks/orders', to: 'process_webhook_order#call'
   get 'menus/:id/orders', to: 'show_orders#call', as: 'orders'
 
-  get 'oauth/authorize', to: 'authorize_oauth#call', as: 'oauth_authorize'
-  get 'oauth/token', to: 'create_oauth_token#call', as: 'oauth_token'
+  scope module: 'oauth' do
+    get 'oauth/authorize', to: 'authorize_user#call', as: 'oauth_authorize'
+    get 'oauth/token', to: 'create_token#call', as: 'oauth_token'
+  end
 end
