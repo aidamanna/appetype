@@ -1,4 +1,4 @@
-describe MenuPublisher do
+describe Menus::Publisher do
   describe '#call' do
     it 'publishes a menu' do
       given_a_menu
@@ -20,7 +20,7 @@ describe MenuPublisher do
 
   def and_a_user
     oauth_token = double(:oauth_token)
-    allow(OauthTokenRetriever).to receive(:new).and_return(oauth_token)
+    allow(Oauth::TokenRetriever).to receive(:new).and_return(oauth_token)
     allow(oauth_token).to receive(:call)
   end
 
@@ -41,6 +41,6 @@ describe MenuPublisher do
   end
 
   def when_publishing_the_menu
-    MenuPublisher.new.call(1, 2)
+    Menus::Publisher.new.call(1, 2)
   end
 end

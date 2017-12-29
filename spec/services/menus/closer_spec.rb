@@ -1,4 +1,4 @@
-describe MenuCloser do
+describe Menus::Closer do
   describe '#call' do
     it 'closes a menu' do
       given_a_menu
@@ -19,7 +19,7 @@ describe MenuCloser do
 
     def and_a_user
       oauth_token = double(:oauth_token)
-      allow(OauthTokenRetriever).to receive(:new).and_return(oauth_token)
+      allow(Oauth::TokenRetriever).to receive(:new).and_return(oauth_token)
       allow(oauth_token).to receive(:call)
     end
 
@@ -35,7 +35,7 @@ describe MenuCloser do
     end
 
     def when_closing_the_menu
-      MenuCloser.new.call(1, 2)
+      Menus::Closer.new.call(1, 2)
     end
   end
 end

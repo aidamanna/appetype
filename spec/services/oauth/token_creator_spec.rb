@@ -1,4 +1,4 @@
-describe OauthTokenCreator do
+describe Oauth::TokenCreator do
   describe '#call' do
     it 'saves the oauth token when there is no previous one' do
       given_a_user_without_a_oauth_token
@@ -41,6 +41,6 @@ describe OauthTokenCreator do
   end
 
   def when_creating_the_oauth_token
-    OauthTokenCreator.new.call(1, 'aBc')
+    Oauth::TokenCreator.new.call(1, 'aBc')
   end
 end

@@ -2,7 +2,7 @@ class ShowOrdersController < ApplicationController
   authorize_resource class: ShowOrdersController
 
   def call
-    @menu, @orders = OrdersShow.new.call(params[:id])
+    @menu, @orders = Orders::Show.new.call(params[:id])
 
     render 'orders/show'
   rescue => err

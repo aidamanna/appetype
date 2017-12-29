@@ -3,7 +3,7 @@ class CloseMenuController < ApplicationController
 
   def call
     begin
-      MenuCloser.new.call(current_user.id, params[:id])
+      Menus::Closer.new.call(current_user.id, params[:id])
       flash[:success] = 'Menu closed'
     rescue => err
       puts "Error closing the menu. Error: #{err}"

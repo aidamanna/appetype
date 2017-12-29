@@ -1,4 +1,4 @@
-describe OrdersShow do
+describe Orders::Show do
   describe '#call' do
     it 'counts the orders' do
       given_a_menu
@@ -24,7 +24,7 @@ describe OrdersShow do
     end
 
     def when_showing_the_orders
-      OrdersShow.new.call(1)
+      Orders::Show.new.call(1)
     end
   end
 end
