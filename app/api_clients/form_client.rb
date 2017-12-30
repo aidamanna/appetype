@@ -1,4 +1,4 @@
-class FormClient < TypeformApiClient
+class FormClient < TypeformAPI
   def create(form_payload)
     response = RestClient.post(
       Config.typeform_base_endpoint + '/forms',

@@ -4,9 +4,9 @@ module Menus
 
     def call
       begin
-        oauth_token = Oauth::TokenRetriever.new.call(current_user.id)
-        form_client = FormClient.new(oauth_token)
-        webhook_client = WebhookClient.new(oauth_token)
+        typeform_api = Typeform::API.new(current_user.id)
+        form_client = typeform_api.form_client
+        webhook_client = typeform_api.webhook_client
         Menus::Publisher.new(form_client, webhook_client).call(params[:id])
         flash[:success] = 'Menu published'
       rescue => err

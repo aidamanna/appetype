@@ -18,9 +18,7 @@ describe Menus::Closer do
     end
 
     def and_a_user
-      oauth_token = double(:oauth_token)
-      allow(Oauth::TokenRetriever).to receive(:new).and_return(oauth_token)
-      allow(oauth_token).to receive(:call)
+      allow(Oauth::TokenRetriever).to receive(:call)
     end
 
     def then_it_makes_the_form_private

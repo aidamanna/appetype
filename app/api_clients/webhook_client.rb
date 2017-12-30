@@ -1,4 +1,4 @@
-class WebhookClient < TypeformApiClient
+class WebhookClient < TypeformAPI
   def create(form_uid)
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{form_uid}/webhooks/appetype",
