@@ -5,7 +5,7 @@
     <% end %>
   </div>
   <div class="col-xs-5 text-right">
-  <%= will_paginate @menus %>
+  <%= will_paginate @menus, inner_window: 0, outer_window: 0 %>
   </div>
 </div>
 <div class="row">

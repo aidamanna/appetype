@@ -10,7 +10,7 @@
     <%= link_to 'Create', new_user_path, class: "btn btn-default btn-xm at-btn-dark" %>
   </div>
   <div class="col-xs-5 text-right">
-    <%= will_paginate %>
+    <%= will_paginate @users, inner_window: 0, outer_window: 0 %>
   </div>
 </div>
 <div class="row">
