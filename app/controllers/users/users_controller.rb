@@ -1,20 +1,23 @@
 class UsersController < ApplicationController
+  layout 'simple', only: %i[new create]
+  skip_before_filter :require_login, only: %i[new create]
   before_action :set_user, except: %i[index new create]
-  load_and_authorize_resource
+  load_and_authorize_resource except: %i[new create]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 4).order(:name)
   end
 
   def new
+    redirect_to menus_path if logged_in?
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'User created'
-      redirect_to user_path(@user)
+      session[:user_id] = @user.id
+      redirect_to menus_path
     else
       render '/users/new'
     end

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     get 'fill', on: :member
   end
 
-  resources :users
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
