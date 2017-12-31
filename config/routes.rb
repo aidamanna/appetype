@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     get 'fill', on: :member
   end
 
+  scope module: 'users' do
+    get 'users/invite', to: 'new_invite#call', as: 'new_user_invitation'
+  end
+
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
 
