@@ -5,7 +5,8 @@ module Oauth
     def call
       begin
         temp_auth_code = params[:code]
-        Oauth::TokenCreator.new.call(current_user.id, temp_auth_code)
+        oauth_client = OauthClient.new
+        Oauth::TokenCreator.new(oauth_client).call(current_user.id, temp_auth_code)
         flash[:success] = 'Appetype is authorized to use Typeform'
       rescue => err
         puts "Error getting the oauth token to use Typeform. Error: #{err}"

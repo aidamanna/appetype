@@ -27,9 +27,8 @@ describe Oauth::TokenCreator do
   end
 
   def it_gets_the_oauth_token
-    oauth_client = double(:oauth_client)
-    allow(OauthClient).to receive(:new).and_return(oauth_client)
-    expect(oauth_client).to receive(:retrieve_token)
+    @oauth_client = double(:oauth_client)
+    expect(@oauth_client).to receive(:retrieve_token)
   end
 
   def and_it_saves_it_to_the_db
@@ -41,6 +40,6 @@ describe Oauth::TokenCreator do
   end
 
   def when_creating_the_oauth_token
-    Oauth::TokenCreator.new.call(1, 'aBc')
+    Oauth::TokenCreator.new(@oauth_client).call(1, 'aBc')
   end
 end
