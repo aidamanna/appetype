@@ -1,11 +1,18 @@
 module Menus
   class Closer
-    def call(user_id, menu_id)
+    def initialize(form_client)
+      @form_client = form_client
+    end
+
+    def call(menu_id)
       menu = Menu.find(menu_id)
       menu.state = 'closed'
-      oauth_token = Oauth::TokenRetriever.call(user_id)
-      FormClient.new(oauth_token).update(menu.form, menu.to_form_payload)
+      form_client.update(menu.form, menu.to_form_payload)
       menu.save
     end
+
+    private
+
+    attr_reader :form_client
   end
 end

@@ -4,7 +4,9 @@ module Menus
 
     def call
       begin
-        Menus::Closer.new.call(current_user.id, params[:id])
+        typeform_api = Typeform::API.new(current_user.id)
+        form_client = typeform_api.form_client
+        Menus::Closer.new(form_client).call(params[:id])
         flash[:success] = 'Menu closed'
       rescue => err
         puts "Error closing the menu. Error: #{err}"
