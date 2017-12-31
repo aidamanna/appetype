@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_171_217_160_301) do
+ActiveRecord::Schema.define(version: 20_171_231_163_238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 20_171_217_160_301) do
 
   create_table 'tokens', primary_key: 'user_id', id: :integer, force: :cascade do |t|
     t.string 'oauth_token'
+  end
+
+  create_table 'user_invitations', primary_key: 'token', id: :string, force: :cascade do |t|
+    t.string 'email'
+    t.date   'accepted_at'
   end
 
   create_table 'users', force: :cascade do |t|
