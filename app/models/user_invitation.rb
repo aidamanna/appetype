@@ -12,4 +12,8 @@ class UserInvitation < ApplicationRecord
             presence: true,
             length: { maximum: 105 },
             format: { with: VALID_EMAIL_REGEX }
+
+  def self.new_with_email(email)
+    new(email: email, token: SecureRandom.uuid, created_at: Time.now)
+  end
 end

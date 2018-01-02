@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20_171_231_163_238) do
   end
 
   create_table 'user_invitations', primary_key: 'token', id: :string, force: :cascade do |t|
-    t.string 'email'
-    t.date   'accepted_at'
+    t.string   'email'
+    t.datetime 'accepted_at'
+    t.datetime 'created_at', null: false
   end
 
   create_table 'users', force: :cascade do |t|
