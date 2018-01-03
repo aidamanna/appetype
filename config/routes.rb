@@ -15,9 +15,10 @@ Rails.application.routes.draw do
     get 'users/invite', to: 'new_invite#call', as: 'new_user_invitation'
     post 'users/invite', to: 'create_invite#call', as: 'create_user_invitation'
     get 'signup', to: 'new#call'
+    post 'users', to: 'create#call'
   end
 
-  resources :users, except: [:new]
+  resources :users, except: [:new, :create]
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
