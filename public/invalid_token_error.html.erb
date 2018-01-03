@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Invalid token error</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="at-error">
+      <img class="at-error-image" src="/images/avocado.jpg">
+      <h1>Invalid token error</h1>
+      <p>Your invitation either is not valid or it has already been used.</p>
+      <p>Contact your admin for more information.</p>
+    </div>
+  </body>
+</html>
