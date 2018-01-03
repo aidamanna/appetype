@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   scope module: 'users' do
     get 'users/invite', to: 'new_invite#call', as: 'new_user_invitation'
     post 'users/invite', to: 'create_invite#call', as: 'create_user_invitation'
+    get 'signup', to: 'new#call'
   end
 
-  get 'signup', to: 'users#new'
   resources :users, except: [:new]
 
   get 'login', to: 'sessions#new'
