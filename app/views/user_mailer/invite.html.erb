@@ -3,10 +3,41 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
-    <h1>Hi,</h1>
-    <p>
-      You have been invited to Appetype.
-    </p>
+  <body style="font-family:avenir, sans-serif;font-size:120%;">
+    <table align="center" cellpadding="0" cellspacing="0" width="600">
+      <tr>
+        <td align="center" bgcolor="#F8F8F8" style="padding: 20px 0 30px 0;">
+          <img src="/images/logo.svg" alt="Appetype" style="display: block;" />
+        </td>
+      </tr>
+      <tr>
+        <td align="center" bgcolor="#F8F8F8" style="color: grey; padding: 10px 30px 30px 30px;">
+          <p>You have been invited to use Appetype!</p>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" bgcolor="#F8F8F8" style="padding: 50px 150px 20px 150px;">
+            <%= link_to 'Sign up to Appetype',
+                        @url,
+                        { style: "border-radius: 4px; display: block; text-align: center; text-decoration: none;" \
+                        " background-color: #89bc62; color: white; padding: 10px 50px 10px 50px", target: "_blank" } %>
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#F8F8F8" style="padding: 10px 40px 5px 40px;">
+          <div style="font-size:12px;line-height:19px;Margin-top:18px;color:lightgrey">
+            <div>You're getting this email because a teammate of yours invited this email address to join Appetype.
+              If this was an error, ignore this email.</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#F8F8F8" style="padding: 10px 40px 30px 40px;">
+          <div style="font-size:12px;line-height:19px;Margin-top:18px;color:lightgrey">
+            <div><i>Love from the Appetype Team.</i></div>
+          </div>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
