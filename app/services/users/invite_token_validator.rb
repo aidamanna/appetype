@@ -1,5 +1,5 @@
 module Users
-  class InviteValidator
+  class InviteTokenValidator
     def call(token)
       raise Error::InvalidToken, 'The invitation token is missing' if token.nil?
 
