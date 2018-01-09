@@ -1,11 +1,11 @@
 module Error
   class DatabaseValidations < StandardError
-    attr_reader :object
+    attr_reader :errors
 
-    def initialize(message, object)
+    def initialize(message, errors)
       super(message)
 
-      @object = object
+      @errors = errors
     end
   end
 end

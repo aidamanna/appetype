@@ -18,7 +18,10 @@ module Users
     def new_invitation(email)
       user_invitation = UserInvitation.new_with_email(email)
       unless user_invitation.save
-        raise Error::DatabaseValidations.new('The user invitation cannot be saved', user_invitation)
+        raise Error::DatabaseValidations.new(
+          'The user invitation cannot be saved',
+          user_invitation.errors.full_messages
+        )
       end
       user_invitation
     end

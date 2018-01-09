@@ -1,0 +1,16 @@
+<% unless errors.nil? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        Errors:
+      </h2>
+      <div class="pannel-body">
+        <ul>
+          <% errors.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

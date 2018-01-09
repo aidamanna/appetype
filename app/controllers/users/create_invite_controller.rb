@@ -16,7 +16,8 @@ module Users
         @user_invitation = UserInvitation.new_with_email(email)
         render 'users/invite'
       rescue Error::DatabaseValidations => err
-        @user_invitation = err.object
+        @validation_errors = err.errors
+        @user_invitation = UserInvitation.new_with_email(email)
         render 'users/invite'
       rescue => err
         puts "Error inviting the user. Error: #{err}"
