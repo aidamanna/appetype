@@ -8,7 +8,7 @@
       <div class="at-sign-up-wrapper">
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-            <%= render 'shared/validations', object: @user %>
+            <%= render 'shared/validation_errors', errors: @validation_errors %>
           </div>
         </div>
         <div class="form-group">

@@ -4,16 +4,18 @@ module Users
     skip_before_action :require_login
 
     def call
+      session[:user_id] = Users::Creator.new.call(user_params)
+      redirect_to menus_path
+    rescue Error::DatabaseValidations => err
+      @validation_errors = err.errors
       @user = User.new(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        user_invitation = UserInvitation.find_by_email(params[:user][:email])
-        user_invitation.accepted_at = Time.now
-        user_invitation.save
-        redirect_to menus_path
-      else
-        render '/users/new'
-      end
+      render '/users/new'
+    rescue => err
+      puts "Error creating the user. Error: #{err}"
+      flash[:danger] = 'Error signing up the user'
+
+      @user = User.new(user_params)
+      render '/users/new'
     end
 
     private
