@@ -3,9 +3,8 @@ module Users
     authorize_resource class: CreateInviteController
 
     def call
-      email = params[:user_invitation][:email]
-
       begin
+        email = params[:user_invitation][:email]
         Users::InviteCreator.new.call(email)
 
         flash[:success] = 'The invitation email has been sent'
