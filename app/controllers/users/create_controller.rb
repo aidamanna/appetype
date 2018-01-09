@@ -6,6 +6,12 @@ module Users
     def call
       session[:user_id] = Users::Creator.new.call(user_params)
       redirect_to menus_path
+    rescue Error::NotInvitedUser => err
+      puts "Error: #{err}"
+      flash[:danger] = 'This email address has not been invited to use Appetype. Ask your admin to invite you.'
+
+      @user = User.new(user_params)
+      render '/users/new'
     rescue Error::DatabaseValidations => err
       @validation_errors = err.errors
       @user = User.new(user_params)
