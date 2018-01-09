@@ -1,5 +1,6 @@
 module Users
   class CreateController < ApplicationController
+    layout 'simple'
     skip_before_action :require_login
 
     def call
