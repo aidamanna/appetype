@@ -8,8 +8,8 @@ class UserInvitation < ApplicationRecord
   validates :token,
             presence: true,
             uniqueness: true
+
   validates :email,
-            presence: true,
             length: { maximum: 105 },
             format: { with: VALID_EMAIL_REGEX }
 
