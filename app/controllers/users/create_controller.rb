@@ -4,7 +4,7 @@ module Users
     skip_before_action :require_login
 
     def call
-      session[:user_id] = Users::Creator.new.call(user_params)
+      session[:user_id] = Users::Creator.new.call(user_params, token)
       redirect_to menus_path
     rescue Error::NotInvitedUser => err
       puts "Error: #{err}"
@@ -28,6 +28,10 @@ module Users
 
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def token
+      params.require(:token)
     end
   end
 end

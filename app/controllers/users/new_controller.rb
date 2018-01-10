@@ -7,7 +7,8 @@ module Users
       return redirect_to menus_path if logged_in?
 
       begin
-        @user = Users::InviteTokenValidator.new.call(params[:token])
+        @token = params[:token]
+        @user = Users::InviteTokenValidator.new.call(@token)
         render 'users/new'
       rescue Error::InvalidToken => err
         puts "Error getting a valid invitation token. Error: #{err.message}"
