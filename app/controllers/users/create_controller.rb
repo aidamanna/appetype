@@ -6,22 +6,16 @@ module Users
     def call
       session[:user_id] = Users::Creator.new.call(user_params, token)
       redirect_to menus_path
-    rescue Error::NotInvitedUser => err
-      puts "Error: #{err}"
+    rescue Error::NotInvitedUser
       flash[:danger] = 'This email address has not been invited to use Appetype. Ask your admin to invite you.'
-
-      @user = User.new(user_params)
-      render '/users/new'
+      render_users_new
     rescue Error::DatabaseValidations => err
       @validation_errors = err.errors
-      @user = User.new(user_params)
-      render '/users/new'
+      render_users_new
     rescue => err
       puts "Error creating the user. Error: #{err}"
       flash[:danger] = 'Error signing up the user'
-
-      @user = User.new(user_params)
-      render '/users/new'
+      render_users_new
     end
 
     private
@@ -32,6 +26,11 @@ module Users
 
     def token
       params.require(:token)
+    end
+
+    def render_users_new
+      @user = User.new(user_params)
+      render '/users/new'
     end
   end
 end
