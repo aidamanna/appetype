@@ -3,7 +3,7 @@ module Orders
     authorize_resource class: ShowController
 
     def call
-      @menu, @orders = Orders::Show.new.call(params[:id])
+      @menu, @orders = Orders::Show.new.call(menu_id)
 
       render 'orders/show'
     rescue StandardError => exception
@@ -11,6 +11,12 @@ module Orders
       flash[:danger] = 'Error showing the results.'
 
       redirect_to menus_path
+    end
+
+    private
+
+    def menu_id
+      params.require(:id)
     end
   end
 end
