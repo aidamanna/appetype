@@ -6,9 +6,9 @@ module Orders
       @menu, @orders = Orders::Show.new.call(params[:id])
 
       render 'orders/show'
-    rescue => err
-      puts "Error showing the results. Error: #{err}"
-      flash[:danger] = 'Error showing the results'
+    rescue StandardError => exception
+      logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
+      flash[:danger] = 'Error showing the results.'
 
       redirect_to menus_path
     end

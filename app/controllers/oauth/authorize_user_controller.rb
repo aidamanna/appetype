@@ -12,9 +12,9 @@ module Oauth
           "scope=#{scopes}"
 
       redirect_to(authorization_url)
-    rescue => err
-      puts "Error authorizing Appetype to use Typeform. Error: #{err}"
-      flash[:danger] = 'Error authorizing Appetype to use Typeform'
+    rescue StandardError => exception
+      logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
+      flash[:danger] = 'Error authorizing Appetype to use Typeform.'
       redirect_to menus_path
     end
   end

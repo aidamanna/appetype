@@ -10,8 +10,7 @@ module Users
         @token = params[:token]
         @user = Users::InviteTokenValidator.new.call(@token)
         render 'users/new'
-      rescue Error::InvalidToken => err
-        puts "Error getting a valid invitation token. Error: #{err.message}"
+      rescue Error::InvalidToken
         render file: "#{Rails.root}/public/invalid_token_error.html.erb", layout: false
       end
     end

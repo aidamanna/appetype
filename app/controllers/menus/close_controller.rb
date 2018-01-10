@@ -8,9 +8,9 @@ module Menus
         form_client = typeform_api.form_client
         Menus::Closer.new(form_client).call(params[:id])
         flash[:success] = 'Menu closed'
-      rescue => err
-        puts "Error closing the menu. Error: #{err}"
-        flash[:danger] = 'Error closing menu'
+      rescue StandardError => exception
+        logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
+        flash[:danger] = 'Error closing menu.'
       end
       redirect_to menus_path
     end

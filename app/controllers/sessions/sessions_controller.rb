@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to menus_path
     else
-      flash.now[:danger] = 'Invalid login'
+      flash[:danger] = 'Invalid login.'
       render 'new'
     end
   end

@@ -9,12 +9,12 @@ module Users
     rescue Error::NotInvitedUser
       flash[:danger] = 'This email address has not been invited to use Appetype. Ask your admin to invite you.'
       render_users_new
-    rescue Error::DatabaseValidations => err
-      @validation_errors = err.errors
+    rescue Error::DatabaseValidations => exception
+      @validation_errors = exception.errors
       render_users_new
-    rescue => err
-      puts "Error creating the user. Error: #{err}"
-      flash[:danger] = 'Error signing up the user'
+    rescue StandardError => exception
+      logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
+      flash[:danger] = 'Error signing up the user.'
       render_users_new
     end
 

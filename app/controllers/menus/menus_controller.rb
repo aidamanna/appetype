@@ -10,7 +10,7 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(week: next_week, daily_menus: daily_menus)
     if @menu.save
-      flash[:success] = "Menu '#{@menu.week_description}' created"
+      flash[:success] = "Menu '#{@menu.week_description}' created."
       redirect_to menu_path(@menu)
     else
       render 'new'
@@ -23,7 +23,7 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(daily_menus: daily_menus)
-      flash[:success] = "Menu '#{@menu.week_description}' updated"
+      flash[:success] = "Menu '#{@menu.week_description}' updated."
       redirect_to menu_path(@menu)
     else
       render 'edit'
