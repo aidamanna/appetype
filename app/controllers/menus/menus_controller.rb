@@ -1,10 +1,6 @@
 class MenusController < ApplicationController
   load_and_authorize_resource
 
-  def edit
-    @menu = Menu.find(params[:id])
-  end
-
   def update
     @menu = Menu.find(params[:id])
     if @menu.update(daily_menus: daily_menus)

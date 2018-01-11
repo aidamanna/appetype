@@ -20,6 +20,7 @@ class Ability
     can :call, Menus::ShowController
     can :call, Menus::NewController
     can :call, Menus::CreateController
+    can :call, Menus::EditController
     can :update, Menu
     can %i[call], Orders::ShowController
     can %i[show update], User, id: user.id
