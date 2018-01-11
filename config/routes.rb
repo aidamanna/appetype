@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   scope module: 'menus' do
     get 'menus', to: 'index#call', as: 'menus'
+    get 'menus/new', to: 'new#call', as: 'new_menu'
     put 'menus/:id/close', to: 'close#call', as: 'close_menu'
     put 'menus/:id/publish', to: 'publish#call', as: 'publish_menu'
   end
 
-  resources :menus, except: [:index] do
+  resources :menus, except: %i[index new] do
     get 'fill', on: :member
   end
 

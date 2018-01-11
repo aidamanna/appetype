@@ -1,11 +1,6 @@
 class MenusController < ApplicationController
   load_and_authorize_resource
 
-  def new
-    @menu = Menu.new
-    @menu.week = next_week
-  end
-
   def create
     @menu = Menu.new(week: next_week, daily_menus: daily_menus)
     if @menu.save
