@@ -1,10 +1,6 @@
 class MenusController < ApplicationController
   load_and_authorize_resource
 
-  def show
-    @menu = Menu.find(params[:id])
-  end
-
   def edit
     @menu = Menu.find(params[:id])
   end

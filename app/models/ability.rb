@@ -16,15 +16,17 @@ class Ability
   end
 
   def catering_user_actions(user)
-    can %i[call], Menus::IndexController
-    can %i[read create update], Menu
+    can :call, Menus::IndexController
+    can :call, Menus::ShowController
+    can %i[create update], Menu
     can %i[call], Orders::ShowController
     can %i[show update], User, id: user.id
   end
 
   def diner_user_actions(user)
-    can %i[call], Menus::IndexController
-    can %i[read fill], Menu
+    can :call, Menus::IndexController
+    can :call, Menus::ShowController
+    can %i[fill], Menu
     can %i[show update], User, id: user.id
   end
 end
