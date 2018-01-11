@@ -1,17 +1,6 @@
 class MenusController < ApplicationController
   load_and_authorize_resource
 
-  def create
-    next_week = Menus::NextWeekPicker.new.call
-    @menu = Menu.new(week: next_week, daily_menus: daily_menus)
-    if @menu.save
-      flash[:success] = "Menu '#{@menu.week_description}' created."
-      redirect_to menu_path(@menu)
-    else
-      render 'new'
-    end
-  end
-
   def show
     @menu = Menu.find(params[:id])
   end
