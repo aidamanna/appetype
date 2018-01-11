@@ -11,10 +11,6 @@ class MenusController < ApplicationController
     end
   end
 
-  def fill
-    @menu = Menu.find(params[:id])
-  end
-
   private
 
   def daily_menus

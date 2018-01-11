@@ -29,7 +29,7 @@ class Ability
   def diner_user_actions(user)
     can :call, Menus::IndexController
     can :call, Menus::ShowController
-    can :fill, Menu
+    can :call, Menus::FillController
     can %i[show update], User, id: user.id
   end
 end

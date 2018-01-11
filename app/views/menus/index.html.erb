@@ -24,7 +24,7 @@
           <% end %>
         <% end %>
         <% if menu.state == 'published' %>
-          <% if can? :fill, Menu %>
+          <% if can? :call, Menus::FillController %>
             <%= link_to 'Fill', fill_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
           <% if can? :call, Menus::CloseController %>
