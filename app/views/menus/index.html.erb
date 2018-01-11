@@ -1,6 +1,6 @@
 <div class="row at-actions-wrapper">
   <div class="col-xs-5 col-xs-offset-1">
-    <% if can? :create, Menu %>
+    <% if can? :call, Menus::CreateController %>
       <%= link_to 'Create', new_menu_path, class: "btn btn-default btn-xm at-btn-dark" %>
     <% end %>
   </div>
@@ -19,7 +19,7 @@
           <% if can? :update, Menu %>
             <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
           <% end %>
-          <% if can? :publish, Menu %>
+          <% if can? :call, Menus::PublishController %>
             <%= link_to 'Publish', publish_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
         <% end %>
@@ -27,7 +27,7 @@
           <% if can? :fill, Menu %>
             <%= link_to 'Fill', fill_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
-          <% if can? :close, Menu %>
+          <% if can? :call, Menus::CloseController %>
             <%= link_to 'Close', close_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
           <% if can? :call, Orders::ShowController %>
