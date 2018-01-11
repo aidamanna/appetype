@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   load_and_authorize_resource
 
   def create
+    next_week = Menus::NextWeekPicker.new.call
     @menu = Menu.new(week: next_week, daily_menus: daily_menus)
     if @menu.save
       flash[:success] = "Menu '#{@menu.week_description}' created."
@@ -63,11 +64,5 @@ class MenusController < ApplicationController
         veggie: params[:friday_veggie]
       }
     }
-  end
-
-  def next_week
-    last_menu = Menu.last
-    date = last_menu.nil? ? Date.today : Date.strptime(last_menu[:week], '%YW%W')
-    date.next_day(7).strftime('%YW%W')
   end
 end
