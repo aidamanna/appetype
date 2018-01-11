@@ -1,5 +1,4 @@
 class MenusController < ApplicationController
-  before_action :set_menu, except: %i[new create]
   load_and_authorize_resource
 
   def new
@@ -17,11 +16,16 @@ class MenusController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @menu = Menu.find(params[:id])
+  end
 
-  def edit; end
+  def edit
+    @menu = Menu.find(params[:id])
+  end
 
   def update
+    @menu = Menu.find(params[:id])
     if @menu.update(daily_menus: daily_menus)
       flash[:success] = "Menu '#{@menu.week_description}' updated."
       redirect_to menu_path(@menu)
@@ -30,13 +34,11 @@ class MenusController < ApplicationController
     end
   end
 
-  def fill; end
-
-  private
-
-  def set_menu
+  def fill
     @menu = Menu.find(params[:id])
   end
+
+  private
 
   def daily_menus
     {
