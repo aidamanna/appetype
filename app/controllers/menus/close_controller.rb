@@ -8,6 +8,8 @@ module Menus
         form_client = typeform_api.form_client
         Menus::Closer.new(form_client).call(menu_id)
         flash[:success] = 'Menu closed'
+      rescue Error::NoOauthToken
+        flash[:danger] = 'You need to authorize Appetype to use Typeform.'
       rescue StandardError => exception
         logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
         flash[:danger] = 'Error closing menu.'

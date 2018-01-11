@@ -9,6 +9,8 @@ module Menus
         webhook_client = typeform_api.webhook_client
         Menus::Publisher.new(form_client, webhook_client).call(menu_id)
         flash[:success] = 'Menu published.'
+      rescue Error::NoOauthToken
+        flash[:danger] = 'You need to authorize Appetype to use Typeform.'
       rescue StandardError => exception
         logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
         flash[:danger] = 'Error publishing menu.'
