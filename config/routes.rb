@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   scope module: 'menus' do
     get 'menus', to: 'index#call', as: 'menus'
-    get 'menus/:id', to: 'show#call', as: 'menu'
     get 'menus/new', to: 'new#call', as: 'new_menu'
     post 'menus', to: 'create#call'
+    get 'menus/:id', to: 'show#call', as: 'menu'
     put 'menus/:id/close', to: 'close#call', as: 'close_menu'
     put 'menus/:id/publish', to: 'publish#call', as: 'publish_menu'
   end
