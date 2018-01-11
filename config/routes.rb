@@ -7,12 +7,11 @@ Rails.application.routes.draw do
     post 'menus', to: 'create#call'
     get 'menus/:id', to: 'show#call', as: 'menu'
     get 'menus/:id/edit', to: 'edit#call', as: 'edit_menu'
+    put 'menus/:id', to: 'update#call'
     get 'menus/:id/fill', to: 'fill#call', as: 'fill_menu'
     put 'menus/:id/close', to: 'close#call', as: 'close_menu'
     put 'menus/:id/publish', to: 'publish#call', as: 'publish_menu'
   end
-
-  resources :menus, except: %i[index new create show edit]
 
   scope module: 'users' do
     get 'users/invite', to: 'new_invite#call', as: 'new_user_invitation'
