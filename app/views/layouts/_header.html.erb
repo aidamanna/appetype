@@ -17,7 +17,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <% if can? :index, User %>
+            <% if can? :call, Users::IndexController %>
               <li><%= link_to 'User management', users_path %></li>
               <li class="divider"></li>
             <% end %>
