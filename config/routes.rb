@@ -4,6 +4,4 @@ Rails.application.routes.draw do
   extend OauthRoutes
   extend MenusRoutes
   extend OrdersRoutes
-
-  root 'sessions#new'
 end
