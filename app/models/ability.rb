@@ -25,6 +25,7 @@ class Ability
     can :call, Orders::ShowController
     can :call, Users::IndexController, id: user.id
     can :call, Users::ShowController, id: user.id
+    can :call, Users::EditController, id: user.id
     can %i[update], User, id: user.id
   end
 
@@ -34,6 +35,7 @@ class Ability
     can :call, Menus::FillController
     can :call, Users::IndexController, id: user.id
     can :call, Users::ShowController, id: user.id
+    can :call, Users::EditController, id: user.id
     can %i[update], User, id: user.id
   end
 end

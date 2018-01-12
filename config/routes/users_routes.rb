@@ -8,9 +8,10 @@ module UsersRoutes
         get 'signup', to: 'new#call'
         post 'users', to: 'create#call'
         get 'users/:id', to: 'show#call', as: 'user'
+        get 'users/:id/edit', to: 'edit#call', as: 'edit_user'
       end
 
-      resources :users, except: %i[new create index show]
+      resources :users, except: %i[new create index show edit]
     end
   end
 end
