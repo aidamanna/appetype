@@ -26,7 +26,5 @@ class FormDefinition
     choice
   end
 
-  private
-
   attr_reader :form_definition
 end
