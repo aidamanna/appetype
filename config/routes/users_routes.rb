@@ -10,9 +10,8 @@ module UsersRoutes
         get 'users/:id', to: 'show#call', as: 'user'
         get 'users/:id/edit', to: 'edit#call', as: 'edit_user'
         put 'users/:id', to: 'update#call'
+        delete 'users/:id', to: 'destroy#call'
       end
-
-      resources :users, except: %i[new create index show edit update]
     end
   end
 end
