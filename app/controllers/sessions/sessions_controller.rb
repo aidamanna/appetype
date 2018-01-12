@@ -1,10 +1,6 @@
 class SessionsController < ApplicationController
-  layout 'simple', only: %i[new create]
-  skip_before_action :require_login, only: %i[new create]
-
-  def new
-    redirect_to menus_path if logged_in?
-  end
+  layout 'simple', only: %i[create]
+  skip_before_action :require_login, only: %i[create]
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
