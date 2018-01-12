@@ -9,6 +9,7 @@ Dotenv.load
 
 module Appetype
   class Application < Rails::Application
+    config.autoload_paths << "#{Rails.root}/config/routes"
     config.autoload_paths << "#{Rails.root}/app/helpers"
 
     Dir["#{Rails.root}/app/controllers/*"].each { |file| config.autoload_paths << file }
