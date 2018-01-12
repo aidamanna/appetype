@@ -7,9 +7,10 @@ module UsersRoutes
         get 'users/index', to: 'index#call', as: 'users'
         get 'signup', to: 'new#call'
         post 'users', to: 'create#call'
+        get 'users/:id', to: 'show#call', as: 'user'
       end
 
-      resources :users, except: %i[new create index]
+      resources :users, except: %i[new create index show]
     end
   end
 end
