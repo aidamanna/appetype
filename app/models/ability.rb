@@ -26,7 +26,7 @@ class Ability
     can :call, Users::IndexController, id: user.id
     can :call, Users::ShowController, id: user.id
     can :call, Users::EditController, id: user.id
-    can %i[update], User, id: user.id
+    can :call, Users::UpdateController, id: user.id
   end
 
   def diner_user_actions(user)
@@ -36,6 +36,6 @@ class Ability
     can :call, Users::IndexController, id: user.id
     can :call, Users::ShowController, id: user.id
     can :call, Users::EditController, id: user.id
-    can %i[update], User, id: user.id
+    can :call, Users::UpdateController, id: user.id
   end
 end
