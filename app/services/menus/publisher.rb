@@ -7,6 +7,7 @@ module Menus
 
     def call(menu_id)
       menu = Menu.find(menu_id)
+      raise Error::MenuStatus, 'The menu status is not draft and cannot be published' unless menu.state == 'draft'
       form_uid = form_client.create(menu.to_form_payload)
       webhook_client.create(form_uid)
       menu.update(state: 'published', form: form_uid)

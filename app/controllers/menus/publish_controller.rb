@@ -11,9 +11,11 @@ module Menus
         flash[:success] = 'Menu published.'
       rescue Error::NoOauthToken
         flash[:danger] = 'You need to authorize Appetype to use Typeform.'
+      rescue Error::MenuStatus
+        flash[:danger] = 'Error publishing the menu.'
       rescue StandardError => exception
         logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
-        flash[:danger] = 'Error publishing menu.'
+        flash[:danger] = 'Error publishing the menu.'
       end
       redirect_to menus_path
     end
