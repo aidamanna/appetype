@@ -4,12 +4,16 @@ module Menus
 
     def call
       @menu = Menu.find(menu_id)
+      raise Error::MenuStatus, 'The menu status is not draft and cannot be updated' unless @menu.state == 'draft'
       if @menu.update(daily_menus: daily_menus)
-        flash[:success] = "Menu '#{@menu.week_description}' updated."
+        flash[:success] = 'Menu updated.'
         redirect_to menu_path(@menu)
       else
         render 'menus/edit'
       end
+    rescue Error::MenuStatus
+      flash[:danger] = 'Error updating the menu.'
+      redirect_to menu_path(@menu)
     end
 
     private
