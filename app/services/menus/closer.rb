@@ -6,6 +6,7 @@ module Menus
 
     def call(menu_id)
       menu = Menu.find(menu_id)
+      raise Error::MenuStatus, 'The menu status is not published and cannot be closed' unless menu.state == 'published'
       menu.state = 'closed'
       form_client.update(menu.form, menu.to_form_payload)
       menu.save
