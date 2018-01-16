@@ -1,8 +1,10 @@
 module Users
   class Creator
+    InvitationNotFound = Class.new(StandardError)
+
     def call(user_params, token)
       user_invitation = UserInvitation.find_by(email: user_params[:email], token: token)
-      raise Error::NotInvitedUser, 'There is not an invitation token for the email' if user_invitation.nil?
+      raise InvitationNotFound, 'There is not an invitation token for the email' if user_invitation.nil?
 
       user = User.new(user_params)
       unless user.save

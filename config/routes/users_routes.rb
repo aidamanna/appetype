@@ -6,7 +6,7 @@ module UsersRoutes
         post 'users/invite', to: 'create_invite#call', as: 'create_user_invitation'
         get 'users/index', to: 'index#call', as: 'users'
         get 'signup', to: 'new#call'
-        post 'users', to: 'create#call'
+        post 'users', to: 'create#call', as: 'create_user'
         get 'users/:id', to: 'show#call', as: 'user'
         get 'users/:id/edit', to: 'edit#call', as: 'edit_user'
         put 'users/:id', to: 'update#call'

@@ -6,7 +6,8 @@ module Users
     def call
       session[:user_id] = Users::Creator.new.call(user_params, token)
       redirect_to menus_path
-    rescue Error::NotInvitedUser
+    rescue Users::Creator::InvitationNotFound => exception
+      logger.debug "[#{exception.class}] #{exception}"
       flash[:danger] = 'This email address has not been invited to use Appetype. Ask your admin to invite you.'
       render_users_new
     rescue Error::DatabaseValidations => exception

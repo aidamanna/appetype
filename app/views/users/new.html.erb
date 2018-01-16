@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <%= form_for(@user, html: { class:'form-horizontal', role:'form' }) do |f| %>
+    <%= form_for(@user, url: create_user_path, html: { class:'form-horizontal', role:'form' }) do |f| %>
       <div class="at-sign-up-wrapper">
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
