@@ -1,16 +1,14 @@
 class WebhookClient < TypeformAPI
+  CreateWebhookError = Class.new(StandardError)
+
   def create(form_uid)
     RestClient.put(
       Config.typeform_base_endpoint + "/forms/#{form_uid}/webhooks/appetype",
       payload,
       'Authorization' => oauth_token
     )
-  rescue RestClient::Exception => err
-    puts "Error creating the webhook for the form with id: #{form_uid} " \
-         "Response code: #{err.http_code} " \
-         "Response body: #{err.http_body}"
-
-    raise 'The webhook cannot be created'
+  rescue RestClient::Exception => exception
+    raise CreateWebhookError, "#{exception.message} #{exception.http_body}"
   end
 
   private

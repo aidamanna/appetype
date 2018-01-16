@@ -5,6 +5,8 @@ module Orders
     def call
       webhook_order = JSON.parse(request.body.read, symbolize_names: true)
       Orders::WebhookProcessor.new.call(webhook_order)
+    rescue FormClient::RetrieveFormError => exception
+      logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
     rescue StandardError => exception
       logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
     end

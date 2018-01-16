@@ -13,6 +13,9 @@ module Menus
         flash[:danger] = 'You need to authorize Appetype to use Typeform.'
       rescue Error::MenuStatus
         flash[:danger] = 'Error publishing the menu.'
+      rescue FormClient::CreateFormError, WebhookClient::CreateWebhookError => exception
+        logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
+        flash[:danger] = 'Error publishing menu.'
       rescue StandardError => exception
         logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
         flash[:danger] = 'Error publishing the menu.'

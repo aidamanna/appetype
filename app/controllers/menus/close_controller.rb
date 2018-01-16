@@ -12,6 +12,9 @@ module Menus
         flash[:danger] = 'You need to authorize Appetype to use Typeform.'
       rescue Error::MenuStatus
         flash[:danger] = 'Error closing the menu.'
+      rescue FormClient::EditFormError => exception
+        logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
+        flash[:danger] = 'Error closing menu.'
       rescue StandardError => exception
         logger.error "[#{exception.class}] #{exception} \n#{exception.backtrace}"
         flash[:danger] = 'Error closing the menu.'

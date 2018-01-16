@@ -1,4 +1,6 @@
 class OauthClient
+  RetrieveTokenError = Class.new(StandardError)
+
   def retrieve_token(temp_auth_code)
     response = RestClient.post(
       Config.typeform_base_endpoint + '/oauth/token',
@@ -7,12 +9,8 @@ class OauthClient
 
     request_body = JSON.parse(response.body, symbolize_names: true)
     request_body[:access_token]
-  rescue RestClient::Exception => err
-    puts 'Error retrieving the token' \
-         "Response code: #{err.http_code} " \
-         "Response body: #{err.http_body}"
-
-    raise 'The token cannot be retrieved'
+  rescue RestClient::Exception => exception
+    raise RetrieveTokenError, "#{exception.message} #{exception.http_body}"
   end
 
   private

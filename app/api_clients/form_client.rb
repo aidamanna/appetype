@@ -1,4 +1,8 @@
 class FormClient < TypeformAPI
+  CreateFormError = Class.new(StandardError)
+  EditFormError = Class.new(StandardError)
+  RetrieveFormError = Class.new(StandardError)
+
   def create(form_payload)
     response = RestClient.post(
       Config.typeform_base_endpoint + '/forms',
@@ -7,12 +11,8 @@ class FormClient < TypeformAPI
     )
 
     JSON.parse(response.body, symbolize_names: true)[:id]
-  rescue RestClient::Exception => err
-    puts 'Error publishing the form' \
-         "Response code: #{err.http_code} " \
-         "Response body: #{err.http_body}"
-
-    raise 'The form cannot be created'
+  rescue RestClient::Exception => exception
+    raise CreateFormError, "#{exception.message} #{exception.http_body}"
   end
 
   def update(form_uid, form_payload)
@@ -21,24 +21,16 @@ class FormClient < TypeformAPI
       form_payload,
       'Authorization' => oauth_token
     )
-  rescue RestClient::Exception => err
-    puts 'Error closing the form' \
-         "Response code: #{err.http_code} " \
-         "Response body: #{err.http_body}"
-
-    raise 'The form cannot be updated'
+  rescue RestClient::Exception => exception
+    raise EditFormError, "#{exception.message} #{exception.http_body}"
   end
 
   def retrieve(form_id)
     response = RestClient.get(Config.typeform_base_endpoint + "/forms/#{form_id}")
 
     JSON.parse(response.body, symbolize_names: true)
-  rescue RestClient::Exception => err
-    puts 'Error retrieving form' \
-         "Response code: #{err.http_code} " \
-         "Response body: #{err.http_body}"
-
-    raise 'The form cannot be retrieved'
+  rescue RestClient::Exception => exception
+    raise RetrieveFormError, "#{exception.message} #{exception.http_body}"
   end
 
   private
