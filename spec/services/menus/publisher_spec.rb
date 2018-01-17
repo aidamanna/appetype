@@ -1,7 +1,7 @@
 describe Menus::Publisher do
   describe '#call' do
     it 'publishes a menu' do
-      given_a_menu
+      given_a_draft_menu
       then_it_creates_a_form
       and_configures_a_webhook
       and_it_sets_the_menu_to_published
@@ -11,8 +11,8 @@ describe Menus::Publisher do
 
   private
 
-  def given_a_menu
-    @menu = double(:menu)
+  def given_a_draft_menu
+    @menu = double(:menu, state: 'draft')
     allow(Menu).to receive(:find).and_return(@menu)
     allow(@menu).to receive(:to_form_payload)
   end
