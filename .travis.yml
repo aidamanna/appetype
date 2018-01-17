@@ -1,6 +1,16 @@
 language: ruby
 
+dist: trusty
+
 install: bundle install
+
+addons:
+  postgresql: "9.6"
+
+before_script:
+  - psql -c 'create database appetype_test;' -U postgres
+  - bundle exec rails db:migrate RAILS_ENV=test
 
 script:
   - bundle exec rubocop
+  - bundle exec rspec
