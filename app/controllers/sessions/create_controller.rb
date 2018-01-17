@@ -5,7 +5,7 @@ module Sessions
 
     def call
       user = User.find_by(email: email)
-      if user && user.authenticate(password)
+      if user&.authenticate(password)
         session[:user_id] = user.id
         redirect_to menus_path
       else
