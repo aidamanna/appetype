@@ -1,19 +1,22 @@
 language: ruby
-
 dist: trusty
-
 env:
-  - BASE_URL=http://localhost:3000
-
+- BASE_URL=http://localhost:3000
 install: bundle install
-
 addons:
-  postgresql: "9.6"
-
+  postgresql: '9.6'
 before_script:
-  - psql -c 'create database appetype_test;' -U postgres
-  - bundle exec rails db:migrate RAILS_ENV=test
-
+- psql -c 'create database appetype_test;' -U postgres
+- bundle exec rails db:migrate RAILS_ENV=test
 script:
-  - bundle exec rubocop
-  - bundle exec rspec
+- bundle exec rubocop
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: UAWS/AQ61fES7is9lCPt4eDdX6sgm/AbLoNhkXKkpeOdr+OZlH+AvFuTargOcRPiFo5Fu6WHO7TaJpXb40jtZh5g4qk4TMMpLexzSCzK7+pIYdbnq0m29WM3mGTa/o5uDuAcVJG6lwyx1uAjw+lScTEdoyLbSZJiPUhkbWbCrFLjAp2qYGGI4xT2P5x9CWTMkxQBlFumjSWMA3IIjcBDvDkWHB9IAlGIld+xnbiHgcv9VnLs4ijO6o7ckxWH6EQOlHL+W++Gk2GWXph+gFrhxPwLoreVxeyL1+ljYs33TwIp0NziEKieMfPP614iOvgF/JqBvdZOQJNRbHeDfJzaubBAyAdUX7IDKSBay3eUA/LQy2yg31e732YOuwvzrvuxb31RxTdBHWlgtTZCf5LpCMEQXHtiFVlG4XyJTQQhSy/TgZpKQUK/DnM25v/lfUmYEnfC1IfGlfvDfjWXHBmrTGOk2WzqcVBARipog1RGQcWaiaRrVKSs2TXOEho6TCzR2vc9IpGdF9vaJYyM89QB5wwY5M1g8jUZwDRJ+acyHeAEkqTaCfzqfRuZnuCGpfx5YbbD02bVfjNgd/fjOsEmlNuI9TJoojOCq/0LXntbo3xF6WJfy7Mvv39Gxo8IdFt/gX48dppC2wA+imBAmddkPOXpdqjYga9bJexOFjvHEk0=
+  app: appetype-food
+  on:
+    branch: master
+  run:
+  - bundle exec rake db:migrate
