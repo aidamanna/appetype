@@ -9,6 +9,9 @@ install: bundle install
 
 addons:
   postgresql: '9.6'
+  code_climate:
+    repo_token:
+      secure: qOw1sK2ciavCmNkBgM5CCvk3VPsi4rujrRTJh/0JsYaXk1nl0rYg5rKdCE1NXg4JZR0oY5sfZ8mCZLGJU2ITlOVzUj7r0cjzInnd2btkSp/7Y2OF6zBeIonRpfZ6NBORuOYOaXEYev7GteTET4jkJNYFco4WKwWsuTjq7N19q1wTM1El80GdgYRcxZMaHYB/NJG9IPwjdBqLGN/g1CzZhhh8oILE92BjtqMK4LfElKP1/8FZDdo0TJ6XEltMJo3Ocs4ElQex4A1QTzZwxngtjEpKicXjS1DXMtITyy5hW7W0bkJWJ5h9Z7crbWzWRm26VtZ1TFtn0VftlHSiX+m/gcedPVSwM7LB8l8PjyIjofqXFvR1BTR37P6DW517iEAmYMk8rYCf7o+uMa2roaw4ElEV8sQw2c01zQfiduJKhkfn0vsjhbd44TvD/xKAFVPQ40N5ezOt0bYqBptOaWmIEXmh1SOBklErmVoO1OgBBYv4W6oeLkGsz07k7qG2k4ExTWtQ5DIpjxNg8d1Hgdchr6QYHpfSayh5HFHlLId68YGWZQX296hkuYNJ1wRzYKnaduerFyZssy3zFRF+BSftnW0NAkBge5mFYGX9pv69WwP7oCoaMzj8R0qUqzCOI5Wx7dW3ynhTiL21kENtcpn1vVgj79blcYF6KBLcD5RZdU0=
 
 before_script:
   - psql -c 'create database appetype_test;' -U postgres
@@ -18,6 +21,9 @@ script:
   - bundle exec rubocop
   - bundle exec rspec
 
+after_success:
+  - bundle exec codeclimate-test-reporter
+  
 deploy:
   provider: heroku
   api_key:
