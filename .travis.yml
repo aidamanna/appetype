@@ -1,16 +1,23 @@
 language: ruby
+
 dist: trusty
+
 env:
-- BASE_URL=http://localhost:3000
+  - BASE_URL=http://localhost:3000
+
 install: bundle install
+
 addons:
   postgresql: '9.6'
+
 before_script:
-- psql -c 'create database appetype_test;' -U postgres
-- bundle exec rails db:migrate RAILS_ENV=test
+  - psql -c 'create database appetype_test;' -U postgres
+  - bundle exec rails db:migrate RAILS_ENV=test
+
 script:
-- bundle exec rubocop
-- bundle exec rspec
+  - bundle exec rubocop
+  - bundle exec rspec
+
 deploy:
   provider: heroku
   api_key:
@@ -19,4 +26,4 @@ deploy:
   on:
     branch: master
   run:
-  - bundle exec rake db:migrate
+    - bundle exec rake db:migrate
