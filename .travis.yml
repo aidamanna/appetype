@@ -2,6 +2,9 @@ language: ruby
 
 dist: trusty
 
+env:
+  - BASE_URL=http://localhost:3000
+
 install: bundle install
 
 addons:
