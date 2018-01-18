@@ -12,7 +12,7 @@ describe Menu do
     end
   end
 
-  describe '.week_description' do
+  describe '#week_description' do
     it 'provides the week description' do
       expect(subject.week_description).to eql('January 22 to January 26')
     end
