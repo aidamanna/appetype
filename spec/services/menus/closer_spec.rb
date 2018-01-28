@@ -10,8 +10,10 @@ describe Menus::Closer do
     private
 
     def given_a_published_menu
-      @menu = double(:menu, state: 'published')
+      @menu = double(:menu)
       allow(Menu).to receive(:find).and_return(@menu)
+      allow(@menu).to receive(:published?).and_return(true)
+      allow(@menu).to receive(:close)
       allow(@menu).to receive(:form)
       allow(@menu).to receive(:to_form_payload)
     end
@@ -22,7 +24,7 @@ describe Menus::Closer do
     end
 
     def and_it_sets_the_menu_to_closed
-      expect(@menu).to receive(:state=).with('closed')
+      expect(@menu).to receive(:close)
       expect(@menu).to receive(:save)
     end
 

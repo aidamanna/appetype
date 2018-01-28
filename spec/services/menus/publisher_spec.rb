@@ -12,8 +12,9 @@ describe Menus::Publisher do
   private
 
   def given_a_draft_menu
-    @menu = double(:menu, state: 'draft')
+    @menu = double(:menu)
     allow(Menu).to receive(:find).and_return(@menu)
+    allow(@menu).to receive(:draft?).and_return(true)
     allow(@menu).to receive(:to_form_payload)
   end
 
