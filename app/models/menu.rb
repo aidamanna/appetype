@@ -1,8 +1,8 @@
 class Menu < ActiveRecord::Base
-  STATUS_DRAFT = 'draft'
-  STATUS_CLOSED = 'closed'
-  STATUS_PUBLISHED = 'published'
-  
+  STATE_DRAFT = 'draft'.freeze
+  STATE_CLOSED = 'closed'.freeze
+  STATE_PUBLISHED = 'published'.freeze
+
   validates :week, presence: true
 
   after_initialize :set_default_values
@@ -46,26 +46,26 @@ class Menu < ActiveRecord::Base
   end
 
   def draft?
-    self.state == STATUS_DRAFT
+    self.state == STATE_DRAFT
   end
 
   def published?
-    self.state == STATUS_PUBLISHED
+    self.state == STATE_PUBLISHED
   end
 
   def closed?
-    self.state == STATUS_CLOSED
+    self.state == STATE_CLOSED
   end
 
   def close
-    self.state = STATUS_CLOSED
+    self.state = STATE_CLOSED
   end
 
   def to_form_payload
     {
       title: week_description,
       settings: {
-        is_public: !self.closed?,
+        is_public: !closed?,
         show_typeform_branding: false
       },
       hidden: [
