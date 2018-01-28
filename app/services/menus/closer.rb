@@ -8,7 +8,8 @@ module Menus
       menu = Menu.find(menu_id)
       raise Error::MenuStatus, 'The menu status is not published and cannot be closed' unless menu.published?
       menu.close
-      form_client.update(menu.form, menu.to_form_payload)
+      form = Form.from_menu(menu)
+      form_client.update(menu.form, form.to_payload)
       menu.save
     end
 
