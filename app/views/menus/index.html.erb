@@ -15,7 +15,7 @@
       <span><%= menu.week_description %></span>
       <div class="pull-right">
         <%= link_to 'View', menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
-        <% if menu.state == 'draft' %>
+        <% if menu.draft? %>
           <% if can? :call, Menus::UpdateController %>
             <%= link_to 'Edit', edit_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-light", role: "button" %>
           <% end %>
@@ -23,7 +23,7 @@
             <%= link_to 'Publish', publish_menu_path(menu), method: :put, class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
         <% end %>
-        <% if menu.state == 'published' %>
+        <% if menu.published? %>
           <% if can? :call, Menus::FillController %>
             <%= link_to 'Fill', fill_menu_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
@@ -34,7 +34,7 @@
             <%= link_to 'Results', orders_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>
         <% end %>
-        <% if menu.state == 'closed' %>
+        <% if menu.closed? %>
           <% if can? :call, Orders::ShowController %>
             <%= link_to 'Results', orders_path(menu), class: "btn btn-default btn-xs at-btn-xs-dark", role: "button" %>
           <% end %>

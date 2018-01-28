@@ -1,4 +1,8 @@
 class Menu < ActiveRecord::Base
+  STATUS_DRAFT = 'draft'
+  STATUS_CLOSED = 'closed'
+  STATUS_PUBLISHED = 'published'
+  
   validates :week, presence: true
 
   after_initialize :set_default_values
@@ -41,11 +45,27 @@ class Menu < ActiveRecord::Base
     "#{initial_date.strftime('%B %d')} to #{final_date.strftime('%B %d')}"
   end
 
+  def draft?
+    self.state == STATUS_DRAFT
+  end
+
+  def published?
+    self.state == STATUS_PUBLISHED
+  end
+
+  def closed?
+    self.state == STATUS_CLOSED
+  end
+
+  def close
+    self.state = STATUS_CLOSED
+  end
+
   def to_form_payload
     {
       title: week_description,
       settings: {
-        is_public: self.state != 'closed',
+        is_public: !self.closed?,
         show_typeform_branding: false
       },
       hidden: [
