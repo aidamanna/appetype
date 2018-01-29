@@ -34,7 +34,7 @@ When closing the menu, the Typeform is made private so that no one else can acce
 
 #### Ruby version
 
-Ruby 2.4.0
+[Ruby 2.4.0](https://rvm.io/rvm/install)
 
 #### System dependencies
 
@@ -43,6 +43,8 @@ Install [bundler](http://bundler.io/) and run ```bundle install```.
 #### Database
 
 Install PostgreSQL. If you're on OSX, you can use Postgres.app and Postico.
+
+Alternatively, you can run Postgres inside a [docker container](https://hub.docker.com/_/postgres/). 
 
 Create the DB running ```bundle exec rake db:create``` and execute the migrations ```bundle exec rake db:migrate```.
 
