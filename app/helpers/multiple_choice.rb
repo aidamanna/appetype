@@ -1,53 +1,35 @@
 class MultipleChoice
-  def from_daily_menu(day, menu)
+  def self.from_daily_menu(day, daily_menu)
     new(title: day.capitalize,
-        description: field_description(menu))
+        description: field_description(daily_menu),
+        choices: Choices.generate(day))
   end
 
-  def initialize; end
+  def field_description(daily_menu)
+    "Side dish: #{daily_menu['side_dish']}\n" \
+    "Omni: #{daily_menu['omni']}\n" \
+    "Veggie: #{daily_menu['veggie']}"
+  end
 
-  def fields
-    daily_menus.map do |day, menu|
-      {
-        type: 'multiple_choice',
-        title: day.capitalize,
-        properties: {
-          description: field_description(menu),
-          vertical_alignment: true,
-          choices: choices(day)
-        }
+  def to_payload
+    {
+      type: 'multiple_choice',
+      title: title,
+      properties: {
+        description: description,
+        vertical_alignment: true,
+        choices: choices.to_payload
       }
-    end
+    }
   end
 
-  def field_description(menu)
-    "Side dish: #{menu['side_dish']}\n" \
-    "Omni: #{menu['omni']}\n" \
-    "Veggie: #{menu['veggie']}"
-  end
+  private
 
-  def choices(day)
-    [
-      {
-        label: 'Home office - Omni',
-        ref: "#{day}-home-omni"
-      },
-      {
-        label: 'Home office - Veggie',
-        ref: "#{day}-home-veggie"
-      },
-      {
-        label: 'Beach house - Omni',
-        ref: "#{day}-beach-omni"
-      },
-      {
-        label: 'Beach house - Veggie',
-        ref: "#{day}-beach-veggie"
-      },
-      {
-        label: 'Out of the office',
-        ref: "#{day}-out-out"
-      }
-    ]
+  attr_reader :title, :description, :choices
+
+  def initialize(title:, description:, choices:)
+    @title = title
+    @description = description
+    @choices = choices
   end
 end

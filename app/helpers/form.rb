@@ -2,7 +2,7 @@ class Form
   def self.from_menu(menu)
     new(title: menu.week_description,
         public: !menu.closed?,
-        fields: daily_menus.map { |day, daily_menu| MultipleChoice.from_daily_menu(day, daily_menu) })
+        fields: menu.daily_menus.map { |day, daily_menu| MultipleChoice.from_daily_menu(day, daily_menu) })
   end
 
   def to_payload
@@ -15,7 +15,7 @@ class Form
       hidden: [
         'email'
       ],
-      fields: fields,
+      fields: fields.map(&:to_payload),
       thankyou_screens: [
         {
           title: 'Thank you for ordering your menu!',
