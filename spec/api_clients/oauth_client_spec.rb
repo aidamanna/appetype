@@ -22,5 +22,14 @@ describe OauthClient do
           'redirect_uri' => Config.base_url + '/oauth/token'
         ))
     end
+
+    it 'raises an exception when the API call is not successful' do
+      url = Config.typeform_base_endpoint + '/oauth/token'
+
+      stub_request(:post, url).to_return(status: 400)
+
+      temp_auth_code = 'XyZ'
+      expect { OauthClient.new.retrieve_token(temp_auth_code) }.to raise_error(OauthClient::RetrieveTokenError)
+    end
   end
 end
