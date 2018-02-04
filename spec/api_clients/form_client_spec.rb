@@ -42,4 +42,25 @@ describe FormClient do
       expect { FormClient.new(oauth_token).update(form_uid, {}) }.to raise_error(FormClient::EditFormError)
     end
   end
+
+  describe '#retrieve' do
+    it 'hits typeform api with the correct parameters' do
+      form_uid = 'XyZ'
+      url = Config.typeform_base_endpoint + "/forms/#{form_uid}"
+      stub_request(:get, url).to_return(body: { id: form_uid }.to_json)
+
+      form = FormClient.new.retrieve(form_uid)
+
+      expect(WebMock).to have_requested(:get, url)
+      expect(form).to be_a(Hash)
+    end
+
+    it 'raises an exception when the API call is not successful' do
+      form_uid = 'XyZ'
+      url = Config.typeform_base_endpoint + "/forms/#{form_uid}"
+      stub_request(:get, url).to_return(status: 400)
+
+      expect { FormClient.new.retrieve(form_uid) }.to raise_error(FormClient::RetrieveFormError)
+    end
+  end
 end
