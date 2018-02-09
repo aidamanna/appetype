@@ -65,4 +65,4 @@ Execute ```bundle exec rspec``` to run the tests.
 
 You can deploy your application to Heroku in one click using the button below and following the instructions.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aidamanna/appetype/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

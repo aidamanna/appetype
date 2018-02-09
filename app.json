@@ -1,0 +1,28 @@
+{
+    "name": "Appetype",
+    "description": "Appetype is an application that allows your company to easily manage the catering menu offered to their employees.",
+    "repository": "https://github.com/aidamanna/appetype",
+    "env": {
+        "BASE_URL": {
+            "required": true,
+            "value": "https://<your_app_name>.herokuapp.com",
+            "description": "Your application's base URL"
+        },
+        "TYPEFORM_CLIENT_ID": {
+            "required": true,
+            "description": "Typeform's Client Id"
+        },
+        "TYPEFORM_CLIENT_SECRET": {
+            "required": true,
+            "description": "Typeform's Client Secret"
+        },
+        "SENDGRID_USERNAME": {
+            "required": true,
+            "description": "Username of your Sendgrid's account"
+        },
+        "SENDGRID_PASSWORD": {
+            "required": true,
+            "description": "Password of your Sendgrid's account"
+        }
+    }
+}
