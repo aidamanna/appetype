@@ -60,3 +60,9 @@ Running seeds ```bundle exec rake db:seed``` will populate the database with thr
 
 The code follows [Ruby Stype Guidelines](https://github.com/bbatsov/ruby-style-guide). Run [Rubocop](https://github.com/bbatsov/rubocop) to ensure them by executing ```bundle exec rubocop```.
 Execute ```bundle exec rspec``` to run the tests.
+
+#### Deploy your own instace to Heroku
+
+You can deploy your application to Heroku in one click using the button below and following the instructions.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aidamanna/appetype/tree/master)
