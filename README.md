@@ -12,6 +12,8 @@ Appetype is built on top of [Typeform](https://www.typeform.com/) and it's power
 
 # Usage
 
+[![View it in action](https://user-images.githubusercontent.com/9199692/36027566-257263a8-0d9c-11e8-8464-1f047c3334fb.png)](http://www.youtube.com/watch?v=Uf73oqv0jE4)
+
 The first thing you need to do is authorising Appetype to use Typeform. To do so log in with an admin user, go to the user menu, click Authorize and follow the instructions. Once you are authenticated you can start using Appetype.
 
 A normal workflow will look like the following:
